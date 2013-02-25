@@ -9,7 +9,7 @@
 #import "RCConnectionConfig.h"
 
 
-NSString *const CR_API_PATH = @"http://192.168.3.158/1.0";
+NSString *const CR_API_PATH = @"XXXX";
 
 NSString* crGetAPIKey()
 {
