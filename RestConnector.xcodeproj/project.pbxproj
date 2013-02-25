@@ -19,6 +19,7 @@
 		800F152616DB0EC600AB4D47 /* RCActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 800F152116DB0EC600AB4D47 /* RCActivityIndicator.m */; };
 		800F152716DB0EC600AB4D47 /* RCDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 800F152316DB0EC600AB4D47 /* RCDataManager.m */; };
 		800F152816DB0EC600AB4D47 /* RCURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 800F152516DB0EC600AB4D47 /* RCURLConnection.m */; };
+		800F152E16DB188C00AB4D47 /* RCConnectionConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 800F152D16DB188C00AB4D47 /* RCConnectionConfig.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,8 @@
 		800F152316DB0EC600AB4D47 /* RCDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDataManager.m; sourceTree = "<group>"; };
 		800F152416DB0EC600AB4D47 /* RCURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCURLConnection.h; sourceTree = "<group>"; };
 		800F152516DB0EC600AB4D47 /* RCURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCURLConnection.m; sourceTree = "<group>"; };
+		800F152C16DB188C00AB4D47 /* RCConnectionConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCConnectionConfig.h; sourceTree = "<group>"; };
+		800F152D16DB188C00AB4D47 /* RCConnectionConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCConnectionConfig.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +90,8 @@
 		800F150916DB0EA100AB4D47 /* RestConnector */ = {
 			isa = PBXGroup;
 			children = (
+				800F152C16DB188C00AB4D47 /* RCConnectionConfig.h */,
+				800F152D16DB188C00AB4D47 /* RCConnectionConfig.m */,
 				800F152016DB0EC600AB4D47 /* RCActivityIndicator.h */,
 				800F152116DB0EC600AB4D47 /* RCActivityIndicator.m */,
 				800F152216DB0EC600AB4D47 /* RCDataManager.h */,
@@ -185,6 +190,7 @@
 				800F152616DB0EC600AB4D47 /* RCActivityIndicator.m in Sources */,
 				800F152716DB0EC600AB4D47 /* RCDataManager.m in Sources */,
 				800F152816DB0EC600AB4D47 /* RCURLConnection.m in Sources */,
+				800F152E16DB188C00AB4D47 /* RCConnectionConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +307,7 @@
 				800F151F16DB0EA100AB4D47 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

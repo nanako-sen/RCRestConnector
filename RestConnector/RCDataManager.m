@@ -9,6 +9,7 @@
 #import "RCDataManager.h"
 #import "RCURLConnection.h"
 #import "RCActivityIndicator.h"
+#import "RCConnectionConfig.h"
 
 
 @interface RCDataManager(){
@@ -107,8 +108,7 @@
 
 - (NSString*)apiBaseString
 {
-//    return [NSString stringWithFormat:@"%@/%@",[self apiPath], [self apiToken]];
-    return [NSString stringWithFormat:@"%@",[self apiPath]];
+    return [NSString stringWithFormat:@"%@/%@",[self apiPath], [self apiToken]];
 }
 
 - (NSString*)apiBaseStringWithoutApiKey
@@ -118,13 +118,13 @@
 
 - (NSString*)apiPath
 {
-    return @"http://192.168.3.158/1.0"; //local
+    return CR_API_PATH; //local
 }
 
-//- (NSString*)apiToken
-//{
-//    return  [_auth getApiKey];
-//}
+- (NSString*)apiToken
+{
+    return  crGetAPIKey();
+}
 
 
 - (NSURL*)createApiUrlForMethod:(NSString*)type
