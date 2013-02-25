@@ -12,10 +12,10 @@
 #define CONNECTION_UNAUTHORISED 401
 #endif
 
-@protocol URLConnectionDelegate;
+@protocol RCURLConnectionDelegate;
 
 @interface RCURLConnection : NSObject {
-	__weak id <URLConnectionDelegate> delegate;
+	__weak id <RCURLConnectionDelegate> delegate;
 	NSMutableData *receivedData;
 	NSDate *lastModified;
 	NSURLConnection *connection;
@@ -30,12 +30,12 @@
 @property (nonatomic, retain, readonly) NSError *connectionError;
 @property (nonatomic, retain) NSError *responseError;
 
-- (id) initWithURL:(NSURL *)theURL delegate:(id<URLConnectionDelegate>)theDelegate;
-- (id) initWithURLForPost:(NSURL *)theURL withData:(NSData*)data delegate:(id<URLConnectionDelegate>)theDelegate;
+- (id) initWithURL:(NSURL *)theURL delegate:(id<RCURLConnectionDelegate>)theDelegate;
+- (id) initWithURLForPost:(NSURL *)theURL withData:(NSData*)data delegate:(id<RCURLConnectionDelegate>)theDelegate;
 @end
 
 
-@protocol URLConnectionDelegate<NSObject>
+@protocol RCURLConnectionDelegate<NSObject>
 
 - (void) connectionDidFail:(RCURLConnection *)connection;
 - (void) connectionDidFinish:(RCURLConnection *)connection;

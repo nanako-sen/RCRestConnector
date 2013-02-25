@@ -14,11 +14,16 @@
 #define CONNECTION_FAIL_TAG 1000
 #define RESPONSE_ERROR_401 401
 
+// Classes which inherit from this baseclass
+// should implement this method:
+//- (id)createDataStructure:(NSData*)data;
+
+
+// Classes which implement a subclass of this class
+// need to conform to this protocoll
 @protocol DataManagerDelegate;
 
-@protocol DataManagerBaseSubclassDelegate;
-
-@interface RCDataManager : NSObject <URLConnectionDelegate>{
+@interface RCDataManager : NSObject <RCURLConnectionDelegate>{
      id <DataManagerDelegate> delegate;
     NSString *connectionFailedMsg;
     BOOL debugState;
@@ -56,12 +61,4 @@
 
 @end
 
-//DataManager Classes which inherit form this baseclass must conform
-//to this protocoll
-@protocol DataManagerBaseSubclassDelegate
-
-@required
-- (id)createDataStructure:(NSData*)data;
-
-@end
 

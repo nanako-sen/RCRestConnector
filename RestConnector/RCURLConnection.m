@@ -25,7 +25,7 @@
  and we implement a set of delegate methods that act as callbacks during
  the load. */
 
-- (id) initWithURL:(NSURL *)theURL delegate:(id<URLConnectionDelegate>)theDelegate
+- (id) initWithURL:(NSURL *)theURL delegate:(id<RCURLConnectionDelegate>)theDelegate
 {
 	if (self = [super init]) {
         
@@ -57,7 +57,7 @@
 }
 
 
-- (id)initWithURLForPost:(NSURL *)theURL withData:(NSData*)data delegate:(id<URLConnectionDelegate>)theDelegate
+- (id)initWithURLForPost:(NSURL *)theURL withData:(NSData*)data delegate:(id<RCURLConnectionDelegate>)theDelegate
 {
     if (self = [super init]) {
         self.delegate = theDelegate;
