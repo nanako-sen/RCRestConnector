@@ -42,7 +42,6 @@
     (void)[[RCURLConnection alloc] initWithURL:apiMethod delegate:(id)self];
 }
 
-
 - (void)POSTData:(NSURL*)apiMethod withData:(NSData*)data
 {
      (void)[[RCURLConnection alloc] initWithURLForPost:apiMethod withData:data delegate:(id)self];
@@ -69,7 +68,7 @@
         if(self.debugMode){
             self.connectionFailedMsg = [conError.userInfo objectForKey:@"NSLocalizedDescription"];
         }else {
-            self.connectionFailedMsg = (conError.code == NSURLErrorCannotConnectToHost) ? @"You are not connected to the Internet. Please check your connection settings." : [NSString stringWithFormat:@"An connection error occoured. Error Code: %ld", (long)conError.code];
+            self.connectionFailedMsg = (conError.code == NSURLErrorCannotConnectToHost) ? @"You are not connected to the Internet. Please check your connection settings." : [NSString stringWithFormat:@"A connection error occurred. Error Code: %ld", (long)conError.code];
         }
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection Failed"
@@ -87,7 +86,6 @@
 - (void)startActivityIndicator
 {
     //we need to bring the indicator to the front before we start it
-    [[[UIApplication sharedApplication] keyWindow] bringSubviewToFront:self.activityIndicator];
     [self.activityIndicator startActivityView];
     
     _application.networkActivityIndicatorVisible = YES;

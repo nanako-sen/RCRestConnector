@@ -63,6 +63,7 @@
 
 - (void)startActivityView
 {
+    [[[UIApplication sharedApplication] keyWindow] bringSubviewToFront:self];
     [self startAnimating];
     [self setHidden:NO];
 }

@@ -14,8 +14,9 @@
 #define CONNECTION_FAIL_TAG 1000
 #define RESPONSE_ERROR_401 401
 
-// Classes which inherit from this baseclass
-// should implement this method:
+// !!!: Classes which inherit from this baseclass
+// should implement this methods:
+//- (id)initWithDelegate:(id<DataManagerDelegate>)theDelegate 
 //- (id)createDataStructure:(NSData*)data;
 
 

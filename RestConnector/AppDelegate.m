@@ -6,16 +6,21 @@
 //  Copyright (c) 2013 Nanako. All rights reserved.
 //
 
-#import "RCAppDelegate.h"
+#import "AppDelegate.h"
+#import "TableViewController.h"
 
-@implementation RCAppDelegate
+@implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+   
+        [self.window makeKeyAndVisible];
+    self.window.rootViewController = [[TableViewController alloc] initWithStyle:UITableViewStylePlain];
+    
+    
     self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
+
     return YES;
 }
 
