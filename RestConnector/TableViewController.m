@@ -42,7 +42,9 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [_peopleManager getFacebookPeople];
+    NSURL *url = [NSURL URLWithString:@"https://graph.facebook.com/search?q=watermelon&type=post"];
+    NSDictionary *mapp = @{@"created_time" : @"name", @"id":@"postId"};
+    [_peopleManager GETDataFromURL:url forClass:@"FBPublicPost" atKey:@"data" withMappingDictionary:mapp];
 }
 
 - (void)didReceiveMemoryWarning

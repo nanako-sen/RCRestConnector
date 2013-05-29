@@ -24,11 +24,11 @@
 }
 
 @property (nonatomic, weak) id delegate;
-@property (nonatomic, retain) NSURLConnection *connection;
-@property (nonatomic, retain) NSMutableData *receivedData;
-@property (nonatomic, retain) NSDate *lastModified;
-@property (nonatomic, retain, readonly) NSError *connectionError;
-@property (nonatomic, retain) NSError *responseError;
+@property (nonatomic, strong) NSURLConnection *connection;
+@property (nonatomic, strong) NSMutableData *receivedData;
+@property (nonatomic, strong) NSDate *lastModified;
+@property (nonatomic, strong, readonly) NSError *connectionError;
+@property (nonatomic, strong) NSError *responseError;
 
 - (id) initWithURL:(NSURL *)theURL delegate:(id<RCURLConnectionDelegate>)theDelegate;
 - (id) initWithURLForPost:(NSURL *)theURL withData:(NSData*)data delegate:(id<RCURLConnectionDelegate>)theDelegate;

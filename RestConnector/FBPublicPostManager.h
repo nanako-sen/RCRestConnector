@@ -9,6 +9,5 @@
 #import "RCDataManager.h"
 
 @interface FBPublicPostManager : RCDataManager
-- (id)initWithDelegate:(id<DataManagerDelegate>)theDelegate;
-- (void)getFacebookPeople;
+
 @end

@@ -16,7 +16,18 @@
     NSString *_apiToken;
     //Authentication *_auth;
     UIApplication *_application;
+    BOOL _enableActivityIndicator;
+    NSString *_objectClassName;
+    NSString *_jsonRootKey;
+    NSDictionary *_mappingDictionary;
 }
+- (NSArray*)createDataStructure:(NSData*)data;
+- (void)connectionDidFail:(RCURLConnection *)connection;
+- (void)connectionDidFinish:(RCURLConnection *)connection;
+- (void)responseError401;
+- (void)responseErrorHandling:(int)code;
+- (void)stopActivityIndicator;
+- (void)startActivityIndicator;
 
 @end
 
@@ -26,17 +37,62 @@
 
 - (id)init
 {
+    return [self initWithDelegate:nil];
+}
+
+- (id)initWithDelegate:(id<DataManagerDelegate>)theDelegate
+{
     self = [super init];
     if (self) {
         self.activityIndicator = [RCActivityIndicator sharedInstance];
         //_auth = [Authentication sharedInstance];
         _application = [UIApplication sharedApplication];
+        _enableActivityIndicator = YES;
+        self.delegate = theDelegate;
     }
     return self;
 }
 
-- (void)GETData:(NSURL*)apiMethod
+//http://stackoverflow.com/questions/5197446/nsmutablearray-force-the-array-to-hold-specific-object-type-only
+
+- (NSArray*)createDataStructure:(NSData*)data
+{    
+    NSMutableArray *finalArray = [[NSMutableArray alloc] init];
+    NSDictionary *resultDict = [self getJSONObjectsFromData:data];
+    
+    if (resultDict && finalArray) {
+        NSDictionary *jsonDict = [resultDict objectForKey:_jsonRootKey];
+        for (NSDictionary *dict in jsonDict)
+        {
+            id object = [[NSClassFromString(_objectClassName) alloc] init];
+            for(NSString *mappedKey in [_mappingDictionary allKeys])
+            {
+                id restValue = [dict valueForKey:mappedKey];
+ 
+                NSString *realKey = _mappingDictionary[mappedKey];
+                [object setValue:restValue forKey:realKey]; 
+            }
+            [finalArray addObject:object];
+        }
+    }
+    NSArray * arr = [finalArray copy]; //returning NSarray instead of mutable - copy makes an immutable copy
+    return arr;
+}
+
+- (void)enableActivityIndicator:(BOOL)b
 {
+    _enableActivityIndicator = b;
+}
+
+//TODO:mothod for not using mapping dictionary for kvc
+- (void)GETDataFromURL:(NSURL*)apiMethod
+              forClass:(NSString*)className
+                 atKey:(NSString*)key
+ withMappingDictionary:(NSDictionary*)mappingDictionary
+{
+    _objectClassName = className;
+    _jsonRootKey = key;
+    _mappingDictionary = mappingDictionary;
     [self startActivityIndicator];
 
     (void)[[RCURLConnection alloc] initWithURL:apiMethod delegate:(id)self];
@@ -85,10 +141,12 @@
 
 - (void)startActivityIndicator
 {
-    //we need to bring the indicator to the front before we start it
-    [self.activityIndicator startActivityView];
-    
-    _application.networkActivityIndicatorVisible = YES;
+    if (_enableActivityIndicator) {
+        //we need to bring the indicator to the front before we start it
+        [self.activityIndicator startActivityView];
+        
+        _application.networkActivityIndicatorVisible = YES;
+    }
 }
 
 - (void)stopActivityIndicator
@@ -99,53 +157,44 @@
 
 #pragma mark - dynamic data binding
 
-- (id)createDataStructure:(NSData*)data { return nil;}
+//- (id)createDataStructure:(NSData*)data { return nil;}
 
 
 #pragma mark - common methods
 
-- (NSString*)apiBaseString
+//- (NSString*)apiBaseString
+//{
+//    return [NSString stringWithFormat:@"%@/%@",[self apiPath], [self apiToken]];
+//}
+//
+//- (NSString*)apiBaseStringWithoutApiKey
+//{
+//    return [NSString stringWithFormat:@"%@",[self apiPath]];
+//}
+
+
+//- (NSURL*)createApiUrlForMethod:(NSString*)type
+//{
+//    
+//    NSString *requestURL = [NSString stringWithFormat:@"%@/%@",[self apiBaseString],type];
+//    NSURL *url = [NSURL URLWithString:requestURL];
+//    
+//    NSLog(@"requested: %@",url);
+//    return url;
+//}
+//
+//- (NSURL*)createApiUrlForMethodWithoutApiKey:(NSString*)type
+//{
+//    NSString *requestURL = [NSString stringWithFormat:@"%@/%@",[self apiBaseStringWithoutApiKey],type];
+//    NSURL *url = [NSURL URLWithString:requestURL];
+//    
+//    NSLog(@"requested: %@",url);
+//    return url;
+//}
+
+
+- (NSDictionary*)getJSONObjectsFromData:(NSData*)data
 {
-    return [NSString stringWithFormat:@"%@/%@",[self apiPath], [self apiToken]];
-}
-
-- (NSString*)apiBaseStringWithoutApiKey
-{
-    return [NSString stringWithFormat:@"%@",[self apiPath]];
-}
-
-- (NSString*)apiPath
-{
-    return CR_API_PATH; //local
-}
-
-- (NSString*)apiToken
-{
-    return  crGetAPIKey();
-}
-
-
-- (NSURL*)createApiUrlForMethod:(NSString*)type
-{
-    
-    NSString *requestURL = [NSString stringWithFormat:@"%@/%@",[self apiBaseString],type];
-    NSURL *url = [NSURL URLWithString:requestURL];
-    
-    NSLog(@"requested: %@",url);
-    return url;
-}
-
-- (NSURL*)createApiUrlForMethodWithoutApiKey:(NSString*)type
-{
-    NSString *requestURL = [NSString stringWithFormat:@"%@/%@",[self apiBaseStringWithoutApiKey],type];
-    NSURL *url = [NSURL URLWithString:requestURL];
-    
-    NSLog(@"requested: %@",url);
-    return url;
-}
-
-
-- (NSDictionary*)getJSONObjectsFromData:(NSData*)data{
     
     NSError*    error       = nil;
     NSDictionary*    resultData = nil;

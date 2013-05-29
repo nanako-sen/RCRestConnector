@@ -31,13 +31,17 @@
     RCActivityIndicator *activityIndicator;
 }
 
-@property (nonatomic, assign) id<DataManagerDelegate> delegate;
+@property (nonatomic, weak) id<DataManagerDelegate> delegate;
 @property (nonatomic, strong) RCActivityIndicator *activityIndicator;
 @property (nonatomic, strong) NSString *connectionFailedMsg;
 @property (nonatomic, assign) BOOL debugMode;
 
+//You can ether init with delegate imediatly or  without to set the delegate later
 - (id)init;
-- (void)GETData:(NSURL*)apiMethod;
+- (id)initWithDelegate:(id<DataManagerDelegate>)theDelegate;
+
+
+- (void)GETDataFromURL:(NSURL*)apiMethod forClass:(NSString*)className atKey:(NSString*)key withMappingDictionary:(NSDictionary*)mappingDictionary;
 - (void)POSTData:(NSURL*)apiMethod withData:(NSData*)data;
 
 - (NSURL*)createApiUrlForMethod:(NSString*)type;
@@ -46,6 +50,7 @@
 - (NSString*)apiBaseString;
 //- (NSString*)apiToken;
 - (void)responseErrorHandling:(int)code;
+- (void)enableActivityIndicator:(BOOL)b;
 
 @end
 
