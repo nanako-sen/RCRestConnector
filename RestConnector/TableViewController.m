@@ -43,7 +43,7 @@
 {
     [super viewDidAppear:animated];
     NSURL *url = [NSURL URLWithString:@"https://graph.facebook.com/search?q=watermelon&type=post"];
-    NSDictionary *mapp = @{@"created_time" : @"name", @"id":@"postId"};
+    NSDictionary *mapp = @{@"likes": @{@"likes":@{@"data":@"name"}}, @"postId":@"id", @"name":@{@"from": @"name"}};
     [_peopleManager GETDataFromURL:url forClass:@"FBPublicPost" atKey:@"data" withMappingDictionary:mapp];
 }
 
@@ -57,7 +57,7 @@
 
 - (void)dataObjectCreated:(id)object
 {
-    _people = (NSArray*)object;
+    _people = [(NSSet*)object allObjects];
     [self.tableView reloadData];
 }
 
@@ -86,48 +86,11 @@
     }
     
     FBPublicPost* post = [_people objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", post.postId];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", post.name];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"likes: %@",post.likes];
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 

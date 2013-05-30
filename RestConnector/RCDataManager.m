@@ -22,6 +22,12 @@
     NSDictionary *_mappingDictionary;
 }
 - (NSArray*)createDataStructure:(NSData*)data;
+/**
+ Returns the value of a key in a Json object
+ @param mappedValue can be a string or an other dictionary
+ @param dict the dictionary to search
+ */
+-(id)getJsonValueByMapedKey:(id)mappedValue inJsonDictionary:(NSDictionary*)dict;
 - (void)connectionDidFail:(RCURLConnection *)connection;
 - (void)connectionDidFinish:(RCURLConnection *)connection;
 - (void)responseError401;
@@ -54,10 +60,15 @@
 }
 
 //http://stackoverflow.com/questions/5197446/nsmutablearray-force-the-array-to-hold-specific-object-type-only
+//TODO: nested json values NSArray *responseArray = [[[responseString JSONValue] objectForKey:@"d"] objectForKey:@"results"];
 
-- (NSArray*)createDataStructure:(NSData*)data
-{    
-    NSMutableArray *finalArray = [[NSMutableArray alloc] init];
+
+- (NSSet*)createDataStructure:(NSData*)data
+{
+
+    //_mappingDictionary = @{@"likes": @{@"likes":@{@"data":@"name"}}, @"postId":@"id", @"name":@{@"from": @"name"}};
+
+    NSMutableSet *finalArray = [[NSMutableSet alloc] init];
     NSDictionary *resultDict = [self getJSONObjectsFromData:data];
     
     if (resultDict && finalArray) {
@@ -65,18 +76,33 @@
         for (NSDictionary *dict in jsonDict)
         {
             id object = [[NSClassFromString(_objectClassName) alloc] init];
-            for(NSString *mappedKey in [_mappingDictionary allKeys])
+
+            for(NSString *realKey in [_mappingDictionary allKeys])
             {
-                id restValue = [dict valueForKey:mappedKey];
- 
-                NSString *realKey = _mappingDictionary[mappedKey];
-                [object setValue:restValue forKey:realKey]; 
+                id mappedValue = [_mappingDictionary valueForKey: realKey];
+                id restValue = [self getJsonValueByMapedKey:mappedValue inJsonDictionary:dict];
+                
+                [object setValue:restValue forKey:realKey];
             }
             [finalArray addObject:object];
         }
     }
-    NSArray * arr = [finalArray copy]; //returning NSarray instead of mutable - copy makes an immutable copy
+    NSSet * arr = [finalArray copy]; //returning NSarray instead of mutable - copy makes an immutable copy
     return arr;
+}
+
+-(id)getJsonValueByMapedKey:(id)mappedValue inJsonDictionary:(NSDictionary*)dict
+{
+    id jsonValue;
+    if ([mappedValue isKindOfClass:[NSString class]])
+        jsonValue = [dict valueForKey:mappedValue];
+    else if ([mappedValue isKindOfClass:[NSDictionary class]]) {
+        NSString *mappedSubKey = [mappedValue allKeys][0];
+        NSDictionary *nestedDict = [dict valueForKey:mappedSubKey];
+        NSString *wantedMappedValue = [mappedValue valueForKey:mappedSubKey];
+        jsonValue = (wantedMappedValue == nil) ? nil : [self getJsonValueByMapedKey:wantedMappedValue inJsonDictionary:nestedDict];
+    }
+    return jsonValue;
 }
 
 - (void)enableActivityIndicator:(BOOL)b
@@ -85,11 +111,20 @@
 }
 
 //TODO:mothod for not using mapping dictionary for kvc
-- (void)GETDataFromURL:(NSURL*)apiMethod
-              forClass:(NSString*)className
-                 atKey:(NSString*)key
+
+/**
+ Sends the request to the service and sets the properties for processing when the response comes back.
+ @param apiMethod Rest url
+ @param className the object class which needs to be created
+ @param key the start root key of the Json object
+ @param mappingDictionary defines how object properties and json properties need to get mapped. 
+        Values in the dictionary can be nested dictionaries to get properties deeper in the json object
+        eg: @{@"likes": @{@"likes":@{@"data":@"name"}}, @"postId":@"id", @"name":@{@"from": @"name"}}
+ */
+- (void)GETDataFromURL:(NSURL*)apiMethod forClass:(NSString*)className atKey:(NSString*)key
  withMappingDictionary:(NSDictionary*)mappingDictionary
 {
+    NSLog(@"calling: %@", apiMethod);
     _objectClassName = className;
     _jsonRootKey = key;
     _mappingDictionary = mappingDictionary;
@@ -198,9 +233,7 @@
     
     NSError*    error       = nil;
     NSDictionary*    resultData = nil;
-    resultData  = [NSJSONSerialization JSONObjectWithData:data
-                                                                   options:kNilOptions
-                                                                     error:&error];
+    resultData  = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     
     if (error){
         NSLog(@"JSON Error: %@ %@", error, [error userInfo]);

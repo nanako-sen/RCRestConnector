@@ -10,17 +10,7 @@
 
 @implementation FBPublicPost
 
-@synthesize name, postId;
-
-- (id)initWithDictionary:(NSDictionary*)dictionary
-{
-    if ((self = [super init])) {
-        self.name = [dictionary objectForKey:@"name"];
-        self.postId = [dictionary objectForKey:@"id"];
-    }
-    
-    return self;
-}
+@synthesize name, postId, likes;
 
 
 @end
