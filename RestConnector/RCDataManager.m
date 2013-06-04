@@ -10,6 +10,8 @@
 #import "RCURLConnection.h"
 #import "RCActivityIndicator.h"
 #import "RCConnectionConfig.h"
+#import "RCDBManager.h"
+#import "FMDatabase.h"
 
 
 @interface RCDataManager(){
@@ -59,15 +61,47 @@
     return self;
 }
 
-//http://stackoverflow.com/questions/5197446/nsmutablearray-force-the-array-to-hold-specific-object-type-only
-//TODO: nested json values NSArray *responseArray = [[[responseString JSONValue] objectForKey:@"d"] objectForKey:@"results"];
 
+//TODO:mothod for not using mapping dictionary for kvc
+
+/**
+ Sends the request to the service and sets the properties for processing when the response comes back.
+ @param apiMethod Rest url
+ @param className the object class which needs to be created
+ @param key the start root key of the Json object
+ @param mappingDictionary defines how object properties and json properties need to get mapped. 
+        Values in the dictionary can be nested dictionaries to get properties deeper in the json object
+        eg: @{@"likes": @{@"likes":@{@"data":@"name"}}, @"postId":@"id", @"name":@{@"from": @"name"}}
+ */
+- (void)GETDataFromURL:(NSURL*)apiMethod forClass:(NSString*)className atKey:(NSString*)key
+ withMappingDictionary:(NSDictionary*)mappingDictionary
+{
+    _objectClassName = className;
+    _jsonRootKey = key;
+    _mappingDictionary = mappingDictionary;
+    [self startActivityIndicator];
+    
+    RCDBManager *DBManager = [RCDBManager sharedInstance];
+    [DBManager createTableIfNotExitsForClass:_objectClassName];
+    
+    NSLog(@"calling: %@", apiMethod);
+    
+    (void)[[RCURLConnection alloc] initWithURL:apiMethod delegate:(id)self];
+}
+
+- (void)POSTData:(NSURL*)apiMethod withData:(NSData*)data
+{
+     (void)[[RCURLConnection alloc] initWithURLForPost:apiMethod withData:data delegate:(id)self];
+}
+
+
+//http://stackoverflow.com/questions/5197446/nsmutablearray-force-the-array-to-hold-specific-object-type-only
+//TODO: nested json values NSArray *responseArray = [[[responseString JSONValue] objectForKey:@"d"] objectForKey:@"results"]; - done
 
 - (NSSet*)createDataStructure:(NSData*)data
 {
-
     //_mappingDictionary = @{@"likes": @{@"likes":@{@"data":@"name"}}, @"postId":@"id", @"name":@{@"from": @"name"}};
-
+    
     NSMutableSet *finalArray = [[NSMutableSet alloc] init];
     NSDictionary *resultDict = [self getJSONObjectsFromData:data];
     
@@ -76,7 +110,7 @@
         for (NSDictionary *dict in jsonDict)
         {
             id object = [[NSClassFromString(_objectClassName) alloc] init];
-
+            
             for(NSString *realKey in [_mappingDictionary allKeys])
             {
                 id mappedValue = [_mappingDictionary valueForKey: realKey];
@@ -105,38 +139,8 @@
     return jsonValue;
 }
 
-- (void)enableActivityIndicator:(BOOL)b
-{
-    _enableActivityIndicator = b;
-}
 
-//TODO:mothod for not using mapping dictionary for kvc
-
-/**
- Sends the request to the service and sets the properties for processing when the response comes back.
- @param apiMethod Rest url
- @param className the object class which needs to be created
- @param key the start root key of the Json object
- @param mappingDictionary defines how object properties and json properties need to get mapped. 
-        Values in the dictionary can be nested dictionaries to get properties deeper in the json object
-        eg: @{@"likes": @{@"likes":@{@"data":@"name"}}, @"postId":@"id", @"name":@{@"from": @"name"}}
- */
-- (void)GETDataFromURL:(NSURL*)apiMethod forClass:(NSString*)className atKey:(NSString*)key
- withMappingDictionary:(NSDictionary*)mappingDictionary
-{
-    NSLog(@"calling: %@", apiMethod);
-    _objectClassName = className;
-    _jsonRootKey = key;
-    _mappingDictionary = mappingDictionary;
-    [self startActivityIndicator];
-
-    (void)[[RCURLConnection alloc] initWithURL:apiMethod delegate:(id)self];
-}
-
-- (void)POSTData:(NSURL*)apiMethod withData:(NSData*)data
-{
-     (void)[[RCURLConnection alloc] initWithURLForPost:apiMethod withData:data delegate:(id)self];
-}
+#pragma mark - URLConnector delegates
 
 - (void) connectionDidFinish:(RCURLConnection *)connection
 {
@@ -174,6 +178,13 @@
         [self.delegate connectionDidFailWithError:connection.connectionError];
 }
 
+#pragma mark - ActivityIndicator methods
+
+- (void)enableActivityIndicator:(BOOL)b
+{
+    _enableActivityIndicator = b;
+}
+
 - (void)startActivityIndicator
 {
     if (_enableActivityIndicator) {
@@ -189,6 +200,7 @@
     [self.activityIndicator stopActivityView];
     _application.networkActivityIndicatorVisible = NO;
 }
+
 
 #pragma mark - dynamic data binding
 
