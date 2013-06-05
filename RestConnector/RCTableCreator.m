@@ -6,17 +6,18 @@
 //  Copyright (c) 2013 Nanako. All rights reserved.
 //
 
-#import "RCTableUtil.h"
+#import "RCTableCreator.h"
 #import "FMDatabase.h"
 #import "RCPropertyClassUtil.h"
 
-@implementation RCTableUtil
+@implementation RCTableCreator
 
 + (BOOL)createTableIfNotExitsOn:(FMDatabase*)DB forClass:(NSString*)className
 {
     //check if table already exists
     [DB open];
-    FMResultSet *res = [DB executeQuery:@"SELECT name FROM sqlite_master WHERE type='table' AND name='?';",className];
+    FMResultSet *res = [DB executeQuery:@"SELECT name FROM sqlite_master WHERE type='table' AND name=?;",className];
+    [res next];
     BOOL tblExists = [res hasAnotherRow]  ;
     [DB close];
     

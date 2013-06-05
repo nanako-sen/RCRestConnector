@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 @class FMDatabase;
 
-@interface RCTableUtil : NSObject
+@interface RCTableCreator : NSObject
 + (BOOL)createTableIfNotExitsOn:(FMDatabase*)DB forClass:(NSString*)className;
 @end

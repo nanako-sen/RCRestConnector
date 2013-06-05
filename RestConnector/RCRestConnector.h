@@ -19,17 +19,19 @@
 // need to conform to this protocoll
 @protocol DataManagerDelegate;
 
-@interface RCDataManager : NSObject <RCURLConnectionDelegate>{
+@interface RCRestConnector : NSObject <RCURLConnectionDelegate>{
      id <DataManagerDelegate> delegate;
     NSString *connectionFailedMsg;
     BOOL debugState;
     RCActivityIndicator *activityIndicator;
+    BOOL useCaching;
 }
 
 @property (nonatomic, weak) id<DataManagerDelegate> delegate;
 @property (nonatomic, strong) RCActivityIndicator *activityIndicator;
 @property (nonatomic, strong) NSString *connectionFailedMsg;
 @property (nonatomic, assign) BOOL debugMode;
+@property (nonatomic, assign) BOOL useCaching;
 
 //You can ether init with delegate imediatly or  without to set the delegate later
 - (id)init;
@@ -42,13 +44,9 @@
 // eg: @{@"likes": @{@"likes":@{@"data":@"name"}}, @"postId":@"id", @"name":@{@"from": @"name"}}
 - (void)GETDataFromURL:(NSURL*)apiMethod forClass:(NSString*)className atKey:(NSString*)key withMappingDictionary:(NSDictionary*)mappingDictionary;
 
+
 - (void)POSTData:(NSURL*)apiMethod withData:(NSData*)data;
 
-//- (NSURL*)createApiUrlForMethod:(NSString*)type;
-//- (NSURL*)createApiUrlForMethodWithoutApiKey:(NSString*)type;
-- (NSDictionary*)getJSONObjectsFromData:(NSData*)data;
-//- (NSString*)apiBaseString;
-//- (NSString*)apiToken;
 - (void)responseErrorHandling:(int)code;
 - (void)enableActivityIndicator:(BOOL)b;
 

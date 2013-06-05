@@ -9,13 +9,17 @@
 #import <Foundation/Foundation.h>
 @class FMDatabase;
 
-@interface RCDBManager : NSObject
+@interface RCDBManager : NSObject {
 
-@property (nonatomic,readonly) NSString *path;
-@property (nonatomic,readonly) FMDatabase *database;
+    FMDatabase *DB;
+}
+
+@property (nonatomic,readonly) FMDatabase *DB;
 
 + (id)sharedInstance;
 - (BOOL)createTableIfNotExitsForClass:(NSString*)className;
-- (void)setDatabasePathWithName:(NSString*)n;
+
+- (BOOL)dataUpToDateForClass:(NSString*)className;
+- (void)insertData:(NSData*)data;
 
 @end

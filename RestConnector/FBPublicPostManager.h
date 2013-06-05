@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Nanako. All rights reserved.
 //
 
-#import "RCDataManager.h"
+#import "RCRestConnector.h"
 
-@interface FBPublicPostManager : RCDataManager
+@interface FBPublicPostManager : RCRestConnector
 
 @end
