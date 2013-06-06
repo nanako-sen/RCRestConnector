@@ -62,6 +62,7 @@ static const char * getPropertyType(objc_property_t property) {
             const char *propType = getPropertyType(property);
             NSString *propertyName = [NSString stringWithUTF8String:propName];
             NSString *propertyType = [NSString stringWithUTF8String:propType];
+//TODO: create another mehtod which gives real property types
             NSString *dbPropType = [self DBFieldTypeFor:propertyType];
             [results setObject:dbPropType forKey:propertyName];
         }

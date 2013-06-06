@@ -10,12 +10,12 @@
 
 @interface FBPublicPost : NSObject {
     NSString *name;
-    NSNumber *postId;
+    NSString *postId;
     NSArray *likes;
 }
 
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSNumber *postId;
+@property (nonatomic, strong) NSString *postId;
 @property (nonatomic, strong) NSArray *likes;
 
 

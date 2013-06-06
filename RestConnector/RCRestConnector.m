@@ -13,6 +13,7 @@
 #import "RCDBManager.h"
 #import "FMDatabase.h"
 #import "RCObjectMapper.h"
+#import "RCTableObjectMapper.h"
 
 
 @interface RCRestConnector(){
@@ -23,6 +24,7 @@
     NSString *_objectClassName;
     NSString *_jsonRootKey;
     NSDictionary *_mappingDictionary;
+    RCDBManager *_DBManager;
 }
 - (NSArray*)createDataStructure:(NSData*)data;
 /**
@@ -57,6 +59,8 @@
         _application = [UIApplication sharedApplication];
         _enableActivityIndicator = YES;
         self.delegate = theDelegate;
+        _DBManager = [RCDBManager sharedInstance];
+        _useCaching = YES;
     }
     return self;
 }
@@ -82,11 +86,11 @@
     [self startActivityIndicator];
     
     //TODO: only do this when chaching is wanted
-    RCDBManager *DBManager = [RCDBManager sharedInstance];
-    [DBManager createTableIfNotExitsForClass:_objectClassName];
+    
+    [_DBManager createTableIfNotExitsForClass:_objectClassName];
     
     //check if db contains data or data up to date
-    if (![DBManager dataUpToDateForClass:className]) {
+    if (![_DBManager dataUpToDateForClass:className]) {
         [self GETDataFromURL:apiMethod];
     }
 
@@ -113,13 +117,14 @@
 //returns set of objects
 - (NSSet*)createDataStructure:(NSData*)data
 {
+    NSSet *set = nil;
     if (!_useCaching) {
-        return [RCObjectMapper createObjectFrom:data onJsonRootKey:_jsonRootKey forClass:_objectClassName withMappingDictionary:_mappingDictionary ];
+        set =  [RCObjectMapper createObjectsFromJSON:data onJsonRootKey:_jsonRootKey forClass:_objectClassName withMappingDictionary:_mappingDictionary ];
     }else {//save data in database
-        RCDBManager *DBManager = [RCDBManager sharedInstance];
-        [DBManager insertData:data];
+        //[_DBManager insertData:data];
+        set = [RCTableObjectMapper insertAndGetObjectsFromJSON:_DBManager.DB json:data onJsonRootKey:_jsonRootKey forClass:_objectClassName withMappingDictionary:_mappingDictionary];
     }
-
+    return set;
 }
 
 

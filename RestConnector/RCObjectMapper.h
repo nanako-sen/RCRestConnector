@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface RCObjectMapper : NSObject
-+ (NSSet*)createObjectFrom:(NSData*)jsonData onJsonRootKey:(NSString*)jsonRootKey
++ (NSSet*)createObjectsFromJSON:(NSData*)jsonData onJsonRootKey:(NSString*)jsonRootKey
                   forClass:(NSString*)className withMappingDictionary:(NSDictionary*)mapping;
 @end
