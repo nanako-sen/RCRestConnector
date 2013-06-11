@@ -83,15 +83,18 @@
     _objectClassName = className;
     _jsonRootKey = key;
     _mappingDictionary = mappingDictionary;
-    [self startActivityIndicator];
     
     //TODO: only do this when chaching is wanted
     
     [_DBManager createTableIfNotExitsForClass:_objectClassName];
-    
+    NSArray* data;
     //check if db contains data or data up to date
     if (![_DBManager dataUpToDateForClass:className]) {
+        [self startActivityIndicator];
         [self GETDataFromURL:apiMethod];
+    } else {
+        data = [_DBManager selectRecordsFromTable:className];
+        [self.delegate dataObjectCreated:data];
     }
 
     //if old or no data    
@@ -121,7 +124,6 @@
     if (!_useCaching) {
         set =  [RCObjectMapper createObjectsFromJSON:data onJsonRootKey:_jsonRootKey forClass:_objectClassName withMappingDictionary:_mappingDictionary ];
     }else {//save data in database
-        //[_DBManager insertData:data];
         set = [RCTableObjectMapper insertAndGetObjectsFromJSON:_DBManager.DB json:data onJsonRootKey:_jsonRootKey forClass:_objectClassName withMappingDictionary:_mappingDictionary];
     }
     return set;

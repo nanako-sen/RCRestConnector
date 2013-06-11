@@ -20,6 +20,8 @@
 - (BOOL)createTableIfNotExitsForClass:(NSString*)className;
 
 - (BOOL)dataUpToDateForClass:(NSString*)className;
+- (NSArray*)selectRecordsFromTable:(NSString*)className;
+
 - (void)insertData:(NSData*)data;
 
 @end

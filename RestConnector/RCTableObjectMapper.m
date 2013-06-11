@@ -24,11 +24,14 @@
     if (resultDict && finalArray) {
         [DB open];
         NSDictionary *jsonDict = [resultDict objectForKey:jsonRootKey];
+        NSMutableArray *objProps;
+        NSMutableArray *objPropVals;
+        id object;
         for (NSDictionary *dict in jsonDict)
         {
-            id object = [[NSClassFromString(className) alloc] init];
-            NSMutableArray *objProps= [NSMutableArray new];
-            NSMutableArray *objPropVals = [NSMutableArray new];
+            object = [[NSClassFromString(className) alloc] init];
+            objProps= [NSMutableArray new];
+            objPropVals = [NSMutableArray new];
             
             for(NSString *realKey in [mapping allKeys])
             {
@@ -40,7 +43,8 @@
                 [objPropVals addObject:restValue];
             }
             //iserting object data into db
-            
+            [objProps addObject:@"rc_lastUpdated"];
+            [objPropVals addObject:[NSDate date]];
             NSString *qry = [NSString stringWithFormat:@"INSERT INTO %@ %@ VALUES (%@)", className, [objProps description], [self getDBBindingSymbol:[objPropVals count]]];
             [DB executeUpdate: qry withArgumentsInArray:objPropVals];
 

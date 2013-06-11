@@ -17,13 +17,16 @@
 		800F151816DB0EA100AB4D47 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 800F151716DB0EA100AB4D47 /* Default@2x.png */; };
 		800F151A16DB0EA100AB4D47 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 800F151916DB0EA100AB4D47 /* Default-568h@2x.png */; };
 		800F152616DB0EC600AB4D47 /* RCActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 800F152116DB0EC600AB4D47 /* RCActivityIndicator.m */; };
-		800F152716DB0EC600AB4D47 /* RCDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 800F152316DB0EC600AB4D47 /* RCDataManager.m */; };
+		800F152716DB0EC600AB4D47 /* RCRestConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 800F152316DB0EC600AB4D47 /* RCRestConnector.m */; };
 		800F152816DB0EC600AB4D47 /* RCURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 800F152516DB0EC600AB4D47 /* RCURLConnection.m */; };
 		80D6AD5716DC1DFB00ACBBB9 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80D6AD5616DC1DFB00ACBBB9 /* TableViewController.m */; };
 		80D6AD5A16DC1E2700ACBBB9 /* FBPublicPostManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 80D6AD5916DC1E2700ACBBB9 /* FBPublicPostManager.m */; };
 		80D6AD5D16DC1EEA00ACBBB9 /* FBPublicPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 80D6AD5C16DC1EEA00ACBBB9 /* FBPublicPost.m */; };
 		A63FEFC21758BF530040818E /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A63FEFC11758BF530040818E /* libsqlite3.dylib */; };
 		A63FEFC41758C7C80040818E /* example2.db in Resources */ = {isa = PBXBuildFile; fileRef = A63FEFC31758C7C80040818E /* example2.db */; };
+		A68A6CC1175F49B400DCDE5B /* RCObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A68A6CC0175F49B400DCDE5B /* RCObjectMapper.m */; };
+		A6ACFD52176089F700A1F1E0 /* RCObjectMappingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A6ACFD51176089F700A1F1E0 /* RCObjectMappingHelper.m */; };
+		A6ACFD5517608B4C00A1F1E0 /* RCTableObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A6ACFD5417608B4C00A1F1E0 /* RCTableObjectMapper.m */; };
 		A6C089EB17575FB20069F7AC /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C089E117575FB20069F7AC /* FMDatabase.m */; };
 		A6C089EC17575FB20069F7AC /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C089E317575FB20069F7AC /* FMDatabaseAdditions.m */; };
 		A6C089ED17575FB20069F7AC /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C089E517575FB20069F7AC /* FMDatabasePool.m */; };
@@ -36,7 +39,7 @@
 		A6C08A03175760880069F7AC /* UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C08A02175760880069F7AC /* UnitTests.m */; };
 		A6C08A0A1757658A0069F7AC /* RCDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C08A09175765890069F7AC /* RCDBManager.m */; };
 		A6EDD57C175C82AB007D899D /* RCPropertyClassUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EDD57B175C82AB007D899D /* RCPropertyClassUtil.m */; };
-		A6EDD57F175DED18007D899D /* RCTableUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EDD57E175DED18007D899D /* RCTableUtil.m */; };
+		A6EDD57F175DED18007D899D /* RCTableCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EDD57E175DED18007D899D /* RCTableCreator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,8 +58,8 @@
 		800F151916DB0EA100AB4D47 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		800F152016DB0EC600AB4D47 /* RCActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCActivityIndicator.h; sourceTree = "<group>"; };
 		800F152116DB0EC600AB4D47 /* RCActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCActivityIndicator.m; sourceTree = "<group>"; };
-		800F152216DB0EC600AB4D47 /* RCDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDataManager.h; sourceTree = "<group>"; };
-		800F152316DB0EC600AB4D47 /* RCDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDataManager.m; sourceTree = "<group>"; };
+		800F152216DB0EC600AB4D47 /* RCRestConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCRestConnector.h; sourceTree = "<group>"; };
+		800F152316DB0EC600AB4D47 /* RCRestConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCRestConnector.m; sourceTree = "<group>"; };
 		800F152416DB0EC600AB4D47 /* RCURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCURLConnection.h; sourceTree = "<group>"; };
 		800F152516DB0EC600AB4D47 /* RCURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCURLConnection.m; sourceTree = "<group>"; };
 		80D6AD5516DC1DFB00ACBBB9 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
@@ -67,6 +70,12 @@
 		80D6AD5C16DC1EEA00ACBBB9 /* FBPublicPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBPublicPost.m; sourceTree = "<group>"; };
 		A63FEFC11758BF530040818E /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		A63FEFC31758C7C80040818E /* example2.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = example2.db; sourceTree = "<group>"; };
+		A68A6CBF175F49B400DCDE5B /* RCObjectMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCObjectMapper.h; sourceTree = "<group>"; };
+		A68A6CC0175F49B400DCDE5B /* RCObjectMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCObjectMapper.m; sourceTree = "<group>"; };
+		A6ACFD50176089F700A1F1E0 /* RCObjectMappingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCObjectMappingHelper.h; sourceTree = "<group>"; };
+		A6ACFD51176089F700A1F1E0 /* RCObjectMappingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCObjectMappingHelper.m; sourceTree = "<group>"; };
+		A6ACFD5317608B4C00A1F1E0 /* RCTableObjectMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTableObjectMapper.h; sourceTree = "<group>"; };
+		A6ACFD5417608B4C00A1F1E0 /* RCTableObjectMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTableObjectMapper.m; sourceTree = "<group>"; };
 		A6C089E017575FB20069F7AC /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = vendor/fmdb/src/FMDatabase.h; sourceTree = SOURCE_ROOT; };
 		A6C089E117575FB20069F7AC /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = vendor/fmdb/src/FMDatabase.m; sourceTree = SOURCE_ROOT; };
 		A6C089E217575FB20069F7AC /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseAdditions.h; path = vendor/fmdb/src/FMDatabaseAdditions.h; sourceTree = SOURCE_ROOT; };
@@ -88,8 +97,8 @@
 		A6C08A09175765890069F7AC /* RCDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDBManager.m; sourceTree = "<group>"; };
 		A6EDD57A175C82AB007D899D /* RCPropertyClassUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCPropertyClassUtil.h; sourceTree = "<group>"; };
 		A6EDD57B175C82AB007D899D /* RCPropertyClassUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCPropertyClassUtil.m; sourceTree = "<group>"; };
-		A6EDD57D175DED17007D899D /* RCTableUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTableUtil.h; sourceTree = "<group>"; };
-		A6EDD57E175DED18007D899D /* RCTableUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTableUtil.m; sourceTree = "<group>"; };
+		A6EDD57D175DED17007D899D /* RCTableCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTableCreator.h; sourceTree = "<group>"; };
+		A6EDD57E175DED18007D899D /* RCTableCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTableCreator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,14 +197,18 @@
 				A6C089DF17575F7E0069F7AC /* FMDB */,
 				800F152016DB0EC600AB4D47 /* RCActivityIndicator.h */,
 				800F152116DB0EC600AB4D47 /* RCActivityIndicator.m */,
-				800F152216DB0EC600AB4D47 /* RCDataManager.h */,
-				800F152316DB0EC600AB4D47 /* RCDataManager.m */,
 				800F152416DB0EC600AB4D47 /* RCURLConnection.h */,
 				800F152516DB0EC600AB4D47 /* RCURLConnection.m */,
+				800F152216DB0EC600AB4D47 /* RCRestConnector.h */,
+				800F152316DB0EC600AB4D47 /* RCRestConnector.m */,
 				A6C08A08175765890069F7AC /* RCDBManager.h */,
 				A6C08A09175765890069F7AC /* RCDBManager.m */,
-				A6EDD57D175DED17007D899D /* RCTableUtil.h */,
-				A6EDD57E175DED18007D899D /* RCTableUtil.m */,
+				A6EDD57D175DED17007D899D /* RCTableCreator.h */,
+				A6EDD57E175DED18007D899D /* RCTableCreator.m */,
+				A68A6CBF175F49B400DCDE5B /* RCObjectMapper.h */,
+				A68A6CC0175F49B400DCDE5B /* RCObjectMapper.m */,
+				A6ACFD5317608B4C00A1F1E0 /* RCTableObjectMapper.h */,
+				A6ACFD5417608B4C00A1F1E0 /* RCTableObjectMapper.m */,
 			);
 			name = connector;
 			sourceTree = "<group>";
@@ -247,6 +260,8 @@
 		A6EDD579175C8295007D899D /* helper */ = {
 			isa = PBXGroup;
 			children = (
+				A6ACFD50176089F700A1F1E0 /* RCObjectMappingHelper.h */,
+				A6ACFD51176089F700A1F1E0 /* RCObjectMappingHelper.m */,
 				A6EDD57A175C82AB007D899D /* RCPropertyClassUtil.h */,
 				A6EDD57B175C82AB007D899D /* RCPropertyClassUtil.m */,
 			);
@@ -366,7 +381,7 @@
 				800F151016DB0EA100AB4D47 /* main.m in Sources */,
 				800F151416DB0EA100AB4D47 /* AppDelegate.m in Sources */,
 				800F152616DB0EC600AB4D47 /* RCActivityIndicator.m in Sources */,
-				800F152716DB0EC600AB4D47 /* RCDataManager.m in Sources */,
+				800F152716DB0EC600AB4D47 /* RCRestConnector.m in Sources */,
 				800F152816DB0EC600AB4D47 /* RCURLConnection.m in Sources */,
 				80D6AD5716DC1DFB00ACBBB9 /* TableViewController.m in Sources */,
 				80D6AD5A16DC1E2700ACBBB9 /* FBPublicPostManager.m in Sources */,
@@ -378,7 +393,10 @@
 				A6C089F017575FB20069F7AC /* FMResultSet.m in Sources */,
 				A6C08A0A1757658A0069F7AC /* RCDBManager.m in Sources */,
 				A6EDD57C175C82AB007D899D /* RCPropertyClassUtil.m in Sources */,
-				A6EDD57F175DED18007D899D /* RCTableUtil.m in Sources */,
+				A6EDD57F175DED18007D899D /* RCTableCreator.m in Sources */,
+				A68A6CC1175F49B400DCDE5B /* RCObjectMapper.m in Sources */,
+				A6ACFD52176089F700A1F1E0 /* RCObjectMappingHelper.m in Sources */,
+				A6ACFD5517608B4C00A1F1E0 /* RCTableObjectMapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

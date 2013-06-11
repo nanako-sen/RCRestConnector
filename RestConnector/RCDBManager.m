@@ -9,6 +9,7 @@
 #import "RCDBManager.h"
 #import "FMDatabase.h"
 #import "RCTableCreator.h"
+#import "RCPropertyClassUtil.h"
 
 @interface RCDBManager () {
 
@@ -77,14 +78,44 @@
 
 #pragma mark tabledata methods
 
-//TODO move method into appropriate class
+//TODO move ALL following methods into appropriate class
+//TODO set constant name for data column
 - (BOOL)dataUpToDateForClass:(NSString*)className
 {
-//    [_DB open];
-//    FMResultSet *res = [DB executeQuery:@"SELECT * FROM ? ",className];
-//    [_DB close];
-    //assuming not up to date
-    return false;
+    NSDate *upDated;
+    [_DB open];
+    NSString *qry = [NSString stringWithFormat:@"SELECT * FROM %@ LIMIT 1",className];
+    FMResultSet *res = [_DB executeQuery:qry];
+    while ([res next]) {
+        upDated = [NSDate dateWithTimeIntervalSince1970:[res doubleForColumn:@"rc_lastUpdated"]];
+    }
+    [_DB close];
+    NSComparisonResult result = [[NSDate dateWithTimeInterval:60*60*2 sinceDate:upDated] compare:[NSDate date]];
+    
+    return (result == NSOrderedSame || result == NSOrderedAscending) ? NO : YES;
+
+}
+
+- (NSArray*)selectRecordsFromTable:(NSString*)className
+{
+    NSMutableArray *objects = [NSMutableArray new];
+    
+    NSDictionary *classProps = [RCPropertyClassUtil classPropsFor:[NSClassFromString(className) class]];
+    [_DB open];
+    NSString *qry = [NSString stringWithFormat:@"SELECT * FROM %@",className];
+    FMResultSet *res = [_DB executeQuery:qry];
+    while ([res next])
+    {
+        id object = [[NSClassFromString(className) alloc] init];
+        for (NSString *key in classProps)
+        {
+            [object setValue:[res objectForColumnName:key] forKey:key];
+        }
+
+        [objects addObject:object];
+    }
+    [_DB close];
+    return [objects copy];
 }
 
 - (void)insertData:(NSData*)data
