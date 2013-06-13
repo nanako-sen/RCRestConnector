@@ -9,12 +9,8 @@
 #import "RCRestConnector.h"
 #import "RCURLConnection.h"
 #import "RCActivityIndicator.h"
-#import "RCConnectionConfig.h"
-#import "RCDBManager.h"
-#import "FMDatabase.h"
+#import "RCDataCache.h"
 #import "RCObjectMapper.h"
-#import "RCTableObjectMapper.h"
-
 
 @interface RCRestConnector(){
     NSString *_apiToken;
@@ -24,7 +20,7 @@
     NSString *_objectClassName;
     NSString *_jsonRootKey;
     NSDictionary *_mappingDictionary;
-    RCDBManager *_DBManager;
+
 }
 - (NSArray*)createDataStructure:(NSData*)data;
 /**
@@ -43,7 +39,7 @@
 
 @implementation RCRestConnector
 
-@synthesize delegate = _delegate, connectionFailedMsg = _connectionFailedMsg, debugMode = _debugMode, activityIndicator = _activityIndicator, useCaching = _useCaching;
+@synthesize delegate = _delegate, connectionFailedMsg = _connectionFailedMsg, debugMode = _debugMode, activityIndicator = _activityIndicator, cachingEnabled = _cachingEnabled, cacheRefreshInterval = _cacheRefreshInterval;
 
 - (id)init
 {
@@ -59,8 +55,7 @@
         _application = [UIApplication sharedApplication];
         _enableActivityIndicator = YES;
         self.delegate = theDelegate;
-        _DBManager = [RCDBManager sharedInstance];
-        _useCaching = YES;
+        _cachingEnabled = YES;
     }
     return self;
 }
@@ -80,24 +75,31 @@
 - (void)GETDataFromURL:(NSURL*)apiMethod forClass:(NSString*)className atKey:(NSString*)key
  withMappingDictionary:(NSDictionary*)mappingDictionary
 {
+    NSArray* data;
     _objectClassName = className;
     _jsonRootKey = key;
     _mappingDictionary = mappingDictionary;
     
     //TODO: only do this when chaching is wanted
-    
-    [_DBManager createTableIfNotExitsForClass:_objectClassName];
-    NSArray* data;
-    //check if db contains data or data up to date
-    if (![_DBManager dataUpToDateForClass:className]) {
+    if (_cachingEnabled)
+    {
+        RCDataCache *dataCache = [[RCDataCache alloc]initWithClass:className];
+        if(self.cacheRefreshInterval != 0) dataCache.cacheRefreshInterval = self.cacheRefreshInterval;
+        [dataCache prepareCache];
+
+        //check if db contains data or data up to date
+        if (![dataCache dataNeedsRefresh]) {
+            [self startActivityIndicator];
+            [self GETDataFromURL:apiMethod];
+        } else {
+            data = [dataCache getCachedData] ;
+            [self.delegate dataObjectCreated:data];
+        }
+    }else {
         [self startActivityIndicator];
         [self GETDataFromURL:apiMethod];
-    } else {
-        data = [_DBManager selectRecordsFromTable:className];
-        [self.delegate dataObjectCreated:data];
     }
-
-    //if old or no data    
+    //if old or no data
     
 }
 
@@ -118,13 +120,15 @@
 //TODO: nested json values NSArray *responseArray = [[[responseString JSONValue] objectForKey:@"d"] objectForKey:@"results"]; - done
 
 //returns set of objects
-- (NSSet*)createDataStructure:(NSData*)data
+- (NSArray*)createDataStructure:(NSData*)data
 {
-    NSSet *set = nil;
-    if (!_useCaching) {
-        set =  [RCObjectMapper createObjectsFromJSON:data onJsonRootKey:_jsonRootKey forClass:_objectClassName withMappingDictionary:_mappingDictionary ];
-    }else {//save data in database
-        set = [RCTableObjectMapper insertAndGetObjectsFromJSON:_DBManager.DB json:data onJsonRootKey:_jsonRootKey forClass:_objectClassName withMappingDictionary:_mappingDictionary];
+    NSArray *set = nil;
+    RCObjectMapper *objMapper = [RCObjectMapper sharedInstance];
+    if (_cachingEnabled)
+    {//save data in database
+        set = [objMapper insertAndGetObjectsFromJSON:data onJsonRootKey:_jsonRootKey forClass:_objectClassName withMappingDictionary:_mappingDictionary];
+    }else {
+        set =  [objMapper createObjectsFromJSON:data onJsonRootKey:_jsonRootKey forClass:_objectClassName withMappingDictionary:_mappingDictionary ];
     }
     return set;
 }

@@ -3,12 +3,16 @@
 //  RestConnector
 //
 //  Created by Anna Walser on 6/5/13.
-//  Copyright (c) 2013 Nanako. All rights reserved.
+//  Copyright (c) 2013 Anna Walser. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "RCDBManager.h"
 
-@interface RCObjectMapper : NSObject
-+ (NSSet*)createObjectsFromJSON:(NSData*)jsonData onJsonRootKey:(NSString*)jsonRootKey
+@interface RCObjectMapper : RCDBManager
++ (id)sharedInstance;
+- (NSArray*)createObjectsFromJSON:(NSData*)jsonData onJsonRootKey:(NSString*)jsonRootKey
                   forClass:(NSString*)className withMappingDictionary:(NSDictionary*)mapping;
+
+- (NSArray*)insertAndGetObjectsFromJSON:(NSData*)jsonData onJsonRootKey:(NSString*)jsonRootKey
+                               forClass:(NSString*)className withMappingDictionary:(NSDictionary*)mapping;
 @end

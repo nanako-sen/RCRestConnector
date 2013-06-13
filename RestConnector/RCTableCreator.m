@@ -3,23 +3,41 @@
 //  RestConnector
 //
 //  Created by Anna Walser on 6/4/13.
-//  Copyright (c) 2013 Nanako. All rights reserved.
+//  Copyright (c) 2013 Anna Walser. All rights reserved.
 //
 
 #import "RCTableCreator.h"
 #import "FMDatabase.h"
 #import "RCPropertyClassUtil.h"
 
+@interface RCDBManager ()
+@property (nonatomic,readonly) FMDatabase *DB;
+@end
+
+@interface RCTableCreator ()
+
+@end
+
 @implementation RCTableCreator
 
-+ (BOOL)createTableIfNotExitsOn:(FMDatabase*)DB forClass:(NSString*)className
++ (id)sharedInstance
+{
+    static dispatch_once_t once;
+    static id sharedInstance;
+    dispatch_once(&once, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
+}
+
+- (BOOL)createTableIfNotExits:(NSString*)className
 {
     //check if table already exists
-    [DB open];
-    FMResultSet *res = [DB executeQuery:@"SELECT name FROM sqlite_master WHERE type='table' AND name=?;",className];
+    [self.DB open];
+    FMResultSet *res = [self.DB  executeQuery:@"SELECT name FROM sqlite_master WHERE type='table' AND name=?;",className];
     [res next];
     BOOL tblExists = [res hasAnotherRow]  ;
-    [DB close];
+    [self.DB  close];
     
     if (!tblExists) {
         NSDictionary* classProperties= [RCPropertyClassUtil classPropsFor:[NSClassFromString(className) class]];
@@ -37,12 +55,12 @@
             //NSString *tbFields = [tbFieldsRaw substringFromIndex:[tbFieldsRaw length] -1 ];//stripping last comma
             NSLog(@"creating db with fields:%@",tbFields);
             NSString *qry = [NSString stringWithFormat:@"create table %@ (%@)",className,tbFields];
-            [DB open];
-            if ([DB executeUpdate:qry]) {
+            [self.DB open];
+            if ([self.DB  executeUpdate:qry]) {
                 NSLog(@"success");
             }else
                 NSLog(@"faild");
-            [DB close];
+            [self.DB close];
         } else
             [NSException raise:@"No Table definition" format:@"can't create table because fields not defined"];
         //TODO: is exeption really neccassary? thing of other way to handle this

@@ -3,12 +3,13 @@
 //  RestConnector
 //
 //  Created by Anna Walser on 26/02/13.
-//  Copyright (c) 2013 Nanako. All rights reserved.
+//  Copyright (c) 2013 Anna Walser. All rights reserved.
 //
 
 #import "TableViewController.h"
 #import "FBPublicPostManager.h"
 #import "FBPublicPost.h"
+#import "FBGroup.h"
 
 @interface TableViewController (){
     FBPublicPostManager *_peopleManager;
@@ -42,9 +43,19 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    NSURL *url = [NSURL URLWithString:@"https://graph.facebook.com/search?q=watermelon&type=post"];
-    NSDictionary *mapp = @{@"likes": @{@"likes":@{@"data":@"name"}}, @"postId":@"id", @"name":@{@"from": @"name"}};
-    [_peopleManager GETDataFromURL:url forClass:@"FBPublicPost" atKey:@"data" withMappingDictionary:mapp];
+//    NSURL *url = [NSURL URLWithString:@"https://graph.facebook.com/search?q=watermelon&type=post"];
+//    NSDictionary *mapp = @{@"likes": @{@"likes":@{@"data":@"name"}}, @"postId":@"id", @"name":@{@"from": @"name"}};
+//    [_peopleManager GETDataFromURL:url forClass:@"FBPublicPost" atKey:@"data" withMappingDictionary:mapp];
+    
+    NSURL *url = [NSURL URLWithString:@"https://graph.facebook.com/search?q=programming&type=group"];
+    NSDictionary *mapp = @{@"groupId" : @"id", @"name": @"name"};
+    _peopleManager.cachingEnabled = YES;
+    _peopleManager.cacheRefreshInterval = 60*3;
+    [_peopleManager GETDataFromURL:url forClass:@"FBGroup" atKey:@"data" withMappingDictionary:mapp];
+    
+    
+
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -85,9 +96,9 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
     
-    FBPublicPost* post = [_people objectAtIndex:indexPath.row];
+    FBGroup* post = [_people objectAtIndex:indexPath.row];
     cell.textLabel.text = [NSString stringWithFormat:@"%@", post.name];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"likes: %@",post.likes];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"likes: %@",post.groupId];
     return cell;
 }
 
