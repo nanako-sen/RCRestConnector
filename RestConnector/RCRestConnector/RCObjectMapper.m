@@ -32,7 +32,7 @@ forClass:(NSString*)className withMappingDictionary:(NSDictionary*)mapping
 {
     //_mappingDictionary = @{@"likes": @{@"likes":@{@"data":@"name"}}, @"postId":@"id", @"name":@{@"from": @"name"}};
     
-    NSMutableSet *finalArray = [[NSMutableSet alloc] init];
+    NSMutableArray *finalArray = [[NSMutableArray alloc] init];
     NSDictionary *resultDict = getJSONObjectsFromData(jsonData);
     
     if (resultDict && finalArray) {
@@ -61,7 +61,7 @@ forClass:(NSString*)className withMappingDictionary:(NSDictionary*)mapping
 {
     //_mappingDictionary = @{@"likes": @{@"likes":@{@"data":@"name"}}, @"postId":@"id", @"name":@{@"from": @"name"}};
     
-    NSMutableSet *finalArray = [[NSMutableSet alloc] init];
+    NSMutableArray *finalArray = [[NSMutableArray alloc] init];
     NSDictionary *resultDict = getJSONObjectsFromData(jsonData);
     
     if (resultDict && finalArray) {
