@@ -65,35 +65,45 @@ forClass:(NSString*)className withMappingDictionary:(NSDictionary*)mapping
     NSDictionary *resultDict = getJSONObjectsFromData(jsonData);
     
     if (resultDict && finalArray) {
-        [self.DB open];
+
         NSDictionary *jsonDict = [resultDict objectForKey:jsonRootKey];
         NSMutableArray *objProps;
         NSMutableArray *objPropVals;
         id object;
-        for (NSDictionary *dict in jsonDict)
-        {
-            object = [[NSClassFromString(className) alloc] init];
-            objProps= [NSMutableArray new];
-            objPropVals = [NSMutableArray new];
-            
-            for(NSString *realKey in [mapping allKeys])
+        
+        if ([jsonDict count] != 0) {
+            [self.DB open];
+            NSString *qryDelAll = [NSString stringWithFormat:@"DELETE FROM %@",className];
+            [self.DB executeUpdate:qryDelAll];
+        
+            for (NSDictionary *dict in jsonDict)
             {
-                id mappedValue = [mapping valueForKey: realKey];
-                id restValue = getJsonValueByMappedKey(mappedValue,dict);
+                object = [[NSClassFromString(className) alloc] init];
+                objProps= [NSMutableArray new];
+                objPropVals = [NSMutableArray new];
                 
-                [object setValue:restValue forKey:realKey];
-                [objProps addObject:realKey];
-                [objPropVals addObject:restValue];
-            }
 
-            [objProps addObject:@"rc_lastUpdated"];
-            [objPropVals addObject:[NSDate date]];
-            NSString *qry = [NSString stringWithFormat:@"INSERT INTO %@ %@ VALUES (%@)", className, [objProps description], [self getDBBindingSymbol:[objPropVals count]]];
-            [self.DB executeUpdate: qry withArgumentsInArray:objPropVals];
-            
-            [finalArray addObject:object];
+                
+                for(NSString *realKey in [mapping allKeys])
+                {
+                    id mappedValue = [mapping valueForKey: realKey];
+                    id restValue = getJsonValueByMappedKey(mappedValue,dict);
+                    
+                    [object setValue:restValue forKey:realKey];
+                    [objProps addObject:realKey];
+                    [objPropVals addObject:restValue];
+                }
+
+                [objProps addObject:@"rc_lastUpdated"];
+                [objPropVals addObject:[NSDate date]];
+
+                NSString *qry = [NSString stringWithFormat:@"INSERT INTO %@ %@ VALUES (%@)", className, [objProps description], [self getDBBindingSymbol:[objPropVals count]]];
+                [self.DB executeUpdate: qry withArgumentsInArray:objPropVals];
+                
+                [finalArray addObject:object];
+            }
+            [self.DB close];
         }
-        [self.DB close];
     }
     return [finalArray copy];
 }
