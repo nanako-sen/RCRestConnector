@@ -74,7 +74,7 @@ forClass:(NSString*)className withMappingDictionary:(NSDictionary*)mapping
         if ([jsonDict count] != 0) {
             [self.DB open];
             NSString *qryDelAll = [NSString stringWithFormat:@"DELETE FROM %@",className];
-            [self.DB executeUpdate:qryDelAll];
+            BOOL success = [self.DB executeUpdate:qryDelAll];
         
             for (NSDictionary *dict in jsonDict)
             {

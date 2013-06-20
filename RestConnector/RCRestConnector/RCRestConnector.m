@@ -17,7 +17,7 @@
     //Authentication *_auth;
     UIApplication *_application;
     BOOL _enableActivityIndicator;
-    NSString *_objectClassName;
+
     NSString *_jsonRootKey;
     NSDictionary *_mappingDictionary;
 
@@ -39,7 +39,7 @@
 
 @implementation RCRestConnector
 
-@synthesize delegate = _delegate, connectionFailedMsg = _connectionFailedMsg, debugMode = _debugMode, activityIndicator = _activityIndicator, cachingEnabled = _cachingEnabled, cacheRefreshInterval = _cacheRefreshInterval;
+@synthesize delegate = _delegate, connectionFailedMsg = _connectionFailedMsg, debugMode = _debugMode, activityIndicator = _activityIndicator, cachingEnabled = _cachingEnabled, cacheRefreshInterval = _cacheRefreshInterval, objectClassName = _objectClassName;
 
 - (id)init
 {
@@ -76,7 +76,7 @@
  withMappingDictionary:(NSDictionary*)mappingDictionary
 {
     NSArray* data;
-    _objectClassName = className;
+    self.objectClassName = className;
     _jsonRootKey = key;
     _mappingDictionary = mappingDictionary;
     

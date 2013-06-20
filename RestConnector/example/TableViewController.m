@@ -50,7 +50,7 @@
     NSURL *url = [NSURL URLWithString:@"https://graph.facebook.com/search?q=programming&type=group"];
     NSDictionary *mapp = @{@"groupId" : @"id", @"name": @"name"};
     _peopleManager.cachingEnabled = YES;
-    _peopleManager.cacheRefreshInterval = 60*3;
+    _peopleManager.cacheRefreshInterval = 10;
     [_peopleManager GETDataFromURL:url forClass:@"FBGroup" atKey:@"data" withMappingDictionary:mapp];
     
     

@@ -46,13 +46,18 @@
     
 }
 
-- (NSArray*)selectRecordsFromTable:(NSString*)className
+- (NSArray*)selectRecordsFromTable:(NSString*)className withQry:(NSString*)qryStr
 {
     NSMutableArray *objects = [NSMutableArray new];
+    NSString *qry = nil;
     
     NSDictionary *classProps = [RCPropertyClassUtil classPropsFor:[NSClassFromString(className) class]];
     [self.DB open];
-    NSString *qry = [NSString stringWithFormat:@"SELECT * FROM %@",className];
+    
+    if (qryStr == nil)
+        qry = [NSString stringWithFormat:@"SELECT * FROM %@",className];
+    else
+        qry = qryStr;
     FMResultSet *res = [self.DB executeQuery:qry];
     while ([res next])
     {
@@ -67,4 +72,6 @@
     [self.DB close];
     return [objects copy];
 }
+
+
 @end

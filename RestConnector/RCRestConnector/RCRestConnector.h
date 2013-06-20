@@ -26,6 +26,7 @@
     RCActivityIndicator *activityIndicator;
     BOOL cachingEnabled;
     int cacheRefreshInterval;
+    NSString *objectClassName;
 }
 
 @property (nonatomic, weak) id<DataManagerDelegate> delegate;
@@ -33,6 +34,7 @@
 @property (nonatomic, strong) NSString *connectionFailedMsg;
 @property (nonatomic, assign) BOOL debugMode;
 @property (nonatomic, assign) BOOL cachingEnabled;
+@property (nonatomic, assign) NSString *objectClassName;
 @property (nonatomic, assign) int cacheRefreshInterval;
 
 //You can ether init with delegate imediatly or  without to set the delegate later

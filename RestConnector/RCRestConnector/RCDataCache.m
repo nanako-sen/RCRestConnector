@@ -54,6 +54,6 @@
 
 - (NSArray*)getCachedData
 {
-    return [_dataHandler selectRecordsFromTable:_className];
+    return [_dataHandler selectRecordsFromTable:_className withQry:nil];
 }
 @end

@@ -16,5 +16,6 @@
 
 + (id)sharedInstance;
 -(BOOL)dataIsUpToDateForClass:(NSString*)className;
-- (NSArray*)selectRecordsFromTable:(NSString*)className;
+//- (NSArray*)selectRecordsFromTable:(NSString*)className;
+- (NSArray*)selectRecordsFromTable:(NSString*)className withQry:(NSString*)qryStr;
 @end
