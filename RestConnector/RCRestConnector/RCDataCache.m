@@ -7,7 +7,6 @@
 //
 
 #import "RCDataCache.h"
-#import "RCTableCreator.h"
 #import "RCDataHandler.h"
 
 
@@ -23,14 +22,14 @@
 @implementation RCDataCache
 
 
-@synthesize cacheRefreshInterval = _cacheRefreshInterval;
+@synthesize cacheRefreshInterval = _cacheRefreshInterval, cacheFilterPropertyName = _cacheFilterPropertyName, cacheFilterValue = _cacheFilterValue;
 
 - (id)initWithClass:(NSString*)cN
 {    
     if (self = [super init]) {
         _className = cN;
-        _dataHandler = [RCDataHandler sharedInstance];
-        _dataHandler.cacheRefreshInterval = 60*60*2;
+        _dataHandler = [[RCDataHandler alloc] init];
+        _dataHandler.cacheRefreshInterval = CACHE_REFRESH_INTERVAL;
     }
     
     return self;
@@ -43,17 +42,21 @@
 
 - (void)prepareCache
 {
-    RCTableCreator *tC = [RCTableCreator sharedInstance];
-    [tC createTableIfNotExits:_className];
+    [_dataHandler createTableForClass:_className];
 }
 
 - (BOOL)dataNeedsRefresh
 {
-    return [_dataHandler dataIsUpToDateForClass:_className];
+    if (self.cacheRefreshInterval == 0)
+        return YES;
+    else
+        return [_dataHandler isDataUpToDateForClass:_className];
 }
 
 - (NSArray*)getCachedData
 {
+    _dataHandler.cacheFilterPropertyName = _cacheFilterPropertyName;
+    _dataHandler.cacheFilterValue = _cacheFilterValue;
     return [_dataHandler selectRecordsFromTable:_className withQry:nil];
 }
 @end

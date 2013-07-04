@@ -20,6 +20,9 @@
 
     NSString *_jsonRootKey;
     NSDictionary *_mappingDictionary;
+    RCObjectMapper *_objMapper;
+    NSString *_cacheFilerPropertyName;
+    id _cacheFilterValue;
 
 }
 - (NSArray*)createDataStructure:(NSData*)data;
@@ -56,6 +59,7 @@
         _enableActivityIndicator = YES;
         self.delegate = theDelegate;
         _cachingEnabled = YES;
+        _objMapper = [[RCObjectMapper alloc] init];
     }
     return self;
 }
@@ -80,10 +84,12 @@
     _jsonRootKey = key;
     _mappingDictionary = mappingDictionary;
     
-    //TODO: only do this when chaching is wanted
+
     if (_cachingEnabled)
     {
         RCDataCache *dataCache = [[RCDataCache alloc]initWithClass:className];
+        dataCache.cacheFilterValue = [_cacheFilterValue copy];
+        dataCache.cacheFilterPropertyName = _cacheFilerPropertyName;
         if(self.cacheRefreshInterval != 0) dataCache.cacheRefreshInterval = self.cacheRefreshInterval;
         [dataCache prepareCache];
 
@@ -99,7 +105,7 @@
         [self startActivityIndicator];
         [self GETDataFromURL:apiMethod];
     }
-    //if old or no data
+
     
 }
 
@@ -123,16 +129,23 @@
 - (NSArray*)createDataStructure:(NSData*)data
 {
     NSArray *set = nil;
-    RCObjectMapper *objMapper = [RCObjectMapper sharedInstance];
+    
     if (_cachingEnabled)
     {//save data in database
-        set = [objMapper insertAndGetObjectsFromJSON:data onJsonRootKey:_jsonRootKey forClass:_objectClassName withMappingDictionary:_mappingDictionary];
+        set = [_objMapper insertAndCreateObjectsFromJSON:data onJsonRootKey:_jsonRootKey forClass:_objectClassName withMappingDictionary:_mappingDictionary];
     }else {
-        set =  [objMapper createObjectsFromJSON:data onJsonRootKey:_jsonRootKey forClass:_objectClassName withMappingDictionary:_mappingDictionary ];
+        set =  [_objMapper createObjectsFromJSON:data onJsonRootKey:_jsonRootKey forClass:_objectClassName withMappingDictionary:_mappingDictionary ];
     }
     return set;
 }
 
+- (void)SetCacheFilterProperty:(NSString*)propName forValue:(id)value
+{
+    _cacheFilterValue = value;
+    _cacheFilerPropertyName = propName;
+    _objMapper.cacheFilterPropertyName = propName;
+    _objMapper.cacheFilterValue = value;
+}
 
 #pragma mark - URLConnector delegates
 

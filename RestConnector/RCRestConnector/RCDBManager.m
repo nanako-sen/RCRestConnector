@@ -8,14 +8,13 @@
 
 #import "RCDBManager.h"
 #import "FMDatabase.h"
-#import "RCTableCreator.h"
 #import "RCPropertyClassUtil.h"
 
 @interface RCDBManager () {
     FMDatabase *DB;
 }
 @property (nonatomic,readonly) FMDatabase *DB;
-
+//TODO need only one db instance- creat singleton
 -(BOOL)isExecutable:(FMDatabase*)db;
 - (NSString*)databasePathWithName:(NSString*)n;
 @end

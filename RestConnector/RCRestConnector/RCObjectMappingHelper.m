@@ -13,8 +13,16 @@
 id getJsonValueByMappedKey(id mappedValue,NSDictionary*dict)
 {
     id jsonValue;
-    if ([mappedValue isKindOfClass:[NSString class]])
-        jsonValue = [dict valueForKey:mappedValue];
+    if ([mappedValue isKindOfClass:[NSString class]]) {
+        if ([dict isKindOfClass:[NSDictionary class]]) {
+            jsonValue = [dict valueForKey:mappedValue];
+        }else if ([dict isKindOfClass:[NSArray class]]) {
+#warning - Hack to make it work with array or not - needs to get done propperly but working
+            NSArray *arr = (NSArray*)dict;
+            jsonValue = [arr objectAtIndex: [mappedValue intValue]];
+        }
+        
+    }
     else if ([mappedValue isKindOfClass:[NSDictionary class]]) {
         NSString *mappedSubKey = [mappedValue allKeys][0];
         NSDictionary *nestedDict = [dict valueForKey:mappedSubKey];

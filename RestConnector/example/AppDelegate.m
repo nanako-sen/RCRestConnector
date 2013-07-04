@@ -13,6 +13,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+#if DEBUG
+    if (getenv("runningTests"))
+        return YES;
+#endif
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
    
         [self.window makeKeyAndVisible];
@@ -43,6 +47,10 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+#if DEBUG
+    if (getenv("runningTests"))
+        return;
+#endif
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 

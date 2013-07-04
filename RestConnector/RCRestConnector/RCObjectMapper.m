@@ -17,15 +17,26 @@
 
 @implementation RCObjectMapper
 
-+ (id)sharedInstance
-{
-    static dispatch_once_t once;
-    static id sharedInstance;
-    dispatch_once(&once, ^{
-        sharedInstance = [[self alloc] init];
-    });
-    return sharedInstance;
-}
+@synthesize cacheFilterPropertyName = _cacheFilterPropertyName, cacheFilterValue = _cacheFilterValue;
+
+//+ (id)sharedInstance
+//{
+//    static dispatch_once_t once;
+//    static id sharedInstance;
+//    dispatch_once(&once, ^{
+//        sharedInstance = [[self alloc] init];
+//    });
+//    return sharedInstance;
+//}
+
+//- (id)init
+//{
+//    if(self = [super init])
+//    {
+//        
+//    }
+//    return self;
+//}
 
 - (NSArray*)createObjectsFromJSON:(NSData*)jsonData onJsonRootKey:(NSString*)jsonRootKey
 forClass:(NSString*)className withMappingDictionary:(NSDictionary*)mapping
@@ -56,8 +67,10 @@ forClass:(NSString*)className withMappingDictionary:(NSDictionary*)mapping
 }
 
 
-- (NSArray*)insertAndGetObjectsFromJSON:(NSData*)jsonData onJsonRootKey:(NSString*)jsonRootKey
-                               forClass:(NSString*)className withMappingDictionary:(NSDictionary*)mapping
+- (NSArray*)insertAndCreateObjectsFromJSON:(NSData*)jsonData
+                             onJsonRootKey:(NSString*)jsonRootKey
+                                  forClass:(NSString*)className
+                     withMappingDictionary:(NSDictionary*)mapping
 {
     //_mappingDictionary = @{@"likes": @{@"likes":@{@"data":@"name"}}, @"postId":@"id", @"name":@{@"from": @"name"}};
     
@@ -73,9 +86,18 @@ forClass:(NSString*)className withMappingDictionary:(NSDictionary*)mapping
         
         if ([jsonDict count] != 0) {
             [self.DB open];
-            NSString *qryDelAll = [NSString stringWithFormat:@"DELETE FROM %@",className];
-            BOOL success = [self.DB executeUpdate:qryDelAll];
-        
+            
+            NSString *qryDelete;
+            BOOL success;
+            if (self.cacheFilterPropertyName == NULL && self.cacheFilterValue == NULL) {
+                qryDelete = [NSString stringWithFormat:@"DELETE FROM %@",className];
+                success = [self.DB executeUpdate:qryDelete];
+            }else{
+                qryDelete = [NSString stringWithFormat:@"DELETE FROM %@ where %@ = ?",className,self.cacheFilterPropertyName];
+
+                success = [self.DB executeUpdate:qryDelete, self.cacheFilterValue ];
+            }
+           
             for (NSDictionary *dict in jsonDict)
             {
                 object = [[NSClassFromString(className) alloc] init];

@@ -10,12 +10,18 @@
 
 @interface RCDataHandler : RCDBManager {
     int cacheRefreshInterval;
+    NSString *cacheFilterPropertyName;
+    id cacheFilterValue;
 }
 
 @property (nonatomic,assign) int cacheRefreshInterval;
+@property (nonatomic, retain) NSString *cacheFilterPropertyName;
+@property (nonatomic, retain) id cacheFilterValue;
 
-+ (id)sharedInstance;
--(BOOL)dataIsUpToDateForClass:(NSString*)className;
+
+
+- (BOOL)createTableForClass:(NSString*)className;
+- (BOOL)isDataUpToDateForClass:(NSString*)className;
 //- (NSArray*)selectRecordsFromTable:(NSString*)className;
 - (NSArray*)selectRecordsFromTable:(NSString*)className withQry:(NSString*)qryStr;
 @end

@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 @class FMDatabase;
 
-@interface RCDBManager : NSObject
+@interface RCDBManager : NSObject {
+    
+}
 
 -(id)init;
 

@@ -14,7 +14,7 @@
 
 @protocol RCURLConnectionDelegate;
 
-@interface RCURLConnection : NSObject {
+@interface RCURLConnection : NSObject <NSURLConnectionDelegate, NSURLConnectionDataDelegate>{
 	__weak id <RCURLConnectionDelegate> delegate;
 	NSMutableData *receivedData;
 	NSDate *lastModified;

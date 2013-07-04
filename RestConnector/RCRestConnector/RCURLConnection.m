@@ -21,27 +21,16 @@
 //TODO: rework url connection http://developer.apple.com/library/ios/#samplecode/URLCache/Listings/Classes_URLCacheController_m.html#//apple_ref/doc/uid/DTS40008061-Classes_URLCacheController_m-DontLinkElementID_10
 // implement url caching
 
-/* This method initiates the load request. The connection is asynchronous,
- and we implement a set of delegate methods that act as callbacks during
- the load. */
 
 - (id) initWithURL:(NSURL *)theURL delegate:(id<RCURLConnectionDelegate>)theDelegate
 {
 	if (self = [super init]) {
         
 		self.delegate = theDelegate;
-        
-		/* Create the request. This application does not use a NSURLCache
-		 disk or memory cache, so our cache policy is to satisfy the request
-		 by loading the data from its source. */
-        
+
 		NSURLRequest *theRequest = [NSURLRequest requestWithURL:theURL
 													cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
 												timeoutInterval:20];
-        
-		/* Create the connection with the request and start loading the
-		 data. The connection object is owned both by the creator and the
-		 loading system. */
         
 		self.connection = [NSURLConnection connectionWithRequest:theRequest delegate:self];
 		if (self.connection == nil) {
@@ -84,7 +73,6 @@
 
 
 #pragma mark NSURLConnection delegate methods
-
 - (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
     NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
@@ -95,21 +83,11 @@
         self.responseError = [[NSError alloc] initWithDomain:NSStringFromClass([self.delegate class]) code:code userInfo:nil];
         self.receivedData = nil;
     } else {
-        /* This method is called when the server has determined that it has
-         enough information to create the NSURLResponse. It can be called
-         multiple times, for example in the case of a redirect, so each time
-         we reset the data capacity. */
-        
-        /* create the NSMutableData instance that will hold the received data */
-        
-        long long contentLength = [response expectedContentLength];
+       long long contentLength = [response expectedContentLength];
         if (contentLength == NSURLResponseUnknownLength) {
             contentLength = 500000;
         }
         self.receivedData = [NSMutableData dataWithCapacity:(NSUInteger)contentLength];
-        
-        /* Try to retrieve last modified date from HTTP header. If found, format
-         date so it matches format of cached image file modification date. */
         
         if ([response isKindOfClass:[NSHTTPURLResponse self]]) {
             NSDictionary *headers = [(NSHTTPURLResponse *)response allHeaderFields];
@@ -149,8 +127,6 @@
 - (NSCachedURLResponse *) connection:(NSURLConnection *)connection
 				   willCacheResponse:(NSCachedURLResponse *)cachedResponse
 {
-	/* this application does not use a NSURLCache disk or memory cache */
-    NSLog(@"URLConnection cache response");
     return nil;
 }
 

@@ -11,9 +11,13 @@
 @interface RCDataCache : NSObject
 {
     int cacheRefreshInterval;
+    NSString *cacheFilterPropertyName;
+    id cacheFilterValue;
 }
 
 @property (nonatomic,assign) int cacheRefreshInterval;
+@property (nonatomic, retain) NSString *cacheFilterPropertyName;
+@property (nonatomic, retain) id cacheFilterValue;
 
 - (id)initWithClass:(NSString*)cN;
 - (void)prepareCache;

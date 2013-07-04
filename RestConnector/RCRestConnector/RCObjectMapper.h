@@ -8,11 +8,19 @@
 
 #import "RCDBManager.h"
 
-@interface RCObjectMapper : RCDBManager
-+ (id)sharedInstance;
+@interface RCObjectMapper : RCDBManager {
+    NSString *cacheFilterPropertyName;
+    id cacheFilterValue;
+}
+
+@property (nonatomic, retain) NSString *cacheFilterPropertyName;
+@property (nonatomic, retain) id cacheFilterValue;
+
+//+ (id)sharedInstance;
+//- (id)init;
 - (NSArray*)createObjectsFromJSON:(NSData*)jsonData onJsonRootKey:(NSString*)jsonRootKey
                   forClass:(NSString*)className withMappingDictionary:(NSDictionary*)mapping;
 
-- (NSArray*)insertAndGetObjectsFromJSON:(NSData*)jsonData onJsonRootKey:(NSString*)jsonRootKey
+- (NSArray*)insertAndCreateObjectsFromJSON:(NSData*)jsonData onJsonRootKey:(NSString*)jsonRootKey
                                forClass:(NSString*)className withMappingDictionary:(NSDictionary*)mapping;
 @end

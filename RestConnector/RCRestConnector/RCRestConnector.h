@@ -37,6 +37,7 @@
 @property (nonatomic, assign) NSString *objectClassName;
 @property (nonatomic, assign) int cacheRefreshInterval;
 
+
 //You can ether init with delegate imediatly or  without to set the delegate later
 - (id)init;
 
@@ -50,7 +51,7 @@
 
 
 - (void)POSTData:(NSURL*)apiMethod withData:(NSData*)data;
-
+- (void)SetCacheFilterProperty:(NSString*)propName forValue:(id)value;
 - (void)responseErrorHandling:(int)code;
 - (void)enableActivityIndicator:(BOOL)b;
 
