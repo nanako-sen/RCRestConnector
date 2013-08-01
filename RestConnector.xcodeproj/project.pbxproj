@@ -12,21 +12,24 @@
 		800F150816DB0EA100AB4D47 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 800F150716DB0EA100AB4D47 /* CoreGraphics.framework */; };
 		800F150E16DB0EA100AB4D47 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 800F150C16DB0EA100AB4D47 /* InfoPlist.strings */; };
 		800F151016DB0EA100AB4D47 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 800F150F16DB0EA100AB4D47 /* main.m */; };
-		800F151416DB0EA100AB4D47 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 800F151316DB0EA100AB4D47 /* AppDelegate.m */; };
 		800F151616DB0EA100AB4D47 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 800F151516DB0EA100AB4D47 /* Default.png */; };
 		800F151816DB0EA100AB4D47 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 800F151716DB0EA100AB4D47 /* Default@2x.png */; };
 		800F151A16DB0EA100AB4D47 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 800F151916DB0EA100AB4D47 /* Default-568h@2x.png */; };
-		800F152616DB0EC600AB4D47 /* RCActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 800F152116DB0EC600AB4D47 /* RCActivityIndicator.m */; };
-		800F152716DB0EC600AB4D47 /* RCRestConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 800F152316DB0EC600AB4D47 /* RCRestConnector.m */; };
-		800F152816DB0EC600AB4D47 /* RCURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 800F152516DB0EC600AB4D47 /* RCURLConnection.m */; };
-		80D6AD5716DC1DFB00ACBBB9 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80D6AD5616DC1DFB00ACBBB9 /* TableViewController.m */; };
-		80D6AD5A16DC1E2700ACBBB9 /* FBPublicPostManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 80D6AD5916DC1E2700ACBBB9 /* FBPublicPostManager.m */; };
-		80D6AD5D16DC1EEA00ACBBB9 /* FBPublicPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 80D6AD5C16DC1EEA00ACBBB9 /* FBPublicPost.m */; };
 		A63FEFC21758BF530040818E /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A63FEFC11758BF530040818E /* libsqlite3.dylib */; };
-		A63FEFC41758C7C80040818E /* example2.db in Resources */ = {isa = PBXBuildFile; fileRef = A63FEFC31758C7C80040818E /* example2.db */; };
-		A68A6CC1175F49B400DCDE5B /* RCObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A68A6CC0175F49B400DCDE5B /* RCObjectMapper.m */; };
-		A6ACFD52176089F700A1F1E0 /* RCObjectMappingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A6ACFD51176089F700A1F1E0 /* RCObjectMappingHelper.m */; };
-		A6ACFD5517608B4C00A1F1E0 /* RCTableObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A6ACFD5417608B4C00A1F1E0 /* RCTableObjectMapper.m */; };
+		A68BB504176EEB7A00392DAB /* RCObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB4EE176EEB7A00392DAB /* RCObjectMapper.m */; };
+		A68BB505176EEB7A00392DAB /* RCActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB4F0176EEB7A00392DAB /* RCActivityIndicator.m */; };
+		A68BB506176EEB7A00392DAB /* RCDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB4F1176EEB7A00392DAB /* RCDBManager.m */; };
+		A68BB507176EEB7A00392DAB /* RCDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB4F3176EEB7A00392DAB /* RCDataCache.m */; };
+		A68BB508176EEB7A00392DAB /* RCDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB4F5176EEB7A00392DAB /* RCDataHandler.m */; };
+		A68BB509176EEB7A00392DAB /* RCObjectMappingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB4F8176EEB7A00392DAB /* RCObjectMappingHelper.m */; };
+		A68BB50A176EEB7A00392DAB /* RCPropertyClassUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB4FA176EEB7A00392DAB /* RCPropertyClassUtil.m */; };
+		A68BB50C176EEB7A00392DAB /* RCRestConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB4FD176EEB7A00392DAB /* RCRestConnector.m */; };
+		A68BB50E176EEB7A00392DAB /* RCURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB503176EEB7A00392DAB /* RCURLConnection.m */; };
+		A68BB519176EEBA100392DAB /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB50F176EEBA100392DAB /* TableViewController.m */; };
+		A68BB51A176EEBA100392DAB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB511176EEBA100392DAB /* AppDelegate.m */; };
+		A68BB51B176EEBA100392DAB /* FBGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB513176EEBA100392DAB /* FBGroup.m */; };
+		A68BB51C176EEBA100392DAB /* FBPublicPost.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB515176EEBA100392DAB /* FBPublicPost.m */; };
+		A68BB51D176EEBA100392DAB /* FBPublicPostManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BB517176EEBA100392DAB /* FBPublicPostManager.m */; };
 		A6C089EB17575FB20069F7AC /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C089E117575FB20069F7AC /* FMDatabase.m */; };
 		A6C089EC17575FB20069F7AC /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C089E317575FB20069F7AC /* FMDatabaseAdditions.m */; };
 		A6C089ED17575FB20069F7AC /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C089E517575FB20069F7AC /* FMDatabasePool.m */; };
@@ -37,10 +40,19 @@
 		A6C089FA175760880069F7AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 800F150516DB0EA100AB4D47 /* Foundation.framework */; };
 		A6C08A00175760880069F7AC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A6C089FE175760880069F7AC /* InfoPlist.strings */; };
 		A6C08A03175760880069F7AC /* UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C08A02175760880069F7AC /* UnitTests.m */; };
-		A6C08A0A1757658A0069F7AC /* RCDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C08A09175765890069F7AC /* RCDBManager.m */; };
-		A6EDD57C175C82AB007D899D /* RCPropertyClassUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EDD57B175C82AB007D899D /* RCPropertyClassUtil.m */; };
-		A6EDD57F175DED18007D899D /* RCTableCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EDD57E175DED18007D899D /* RCTableCreator.m */; };
+		A6D69C6017842A7A00DAE82B /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D69C5F17842A7A00DAE82B /* Location.m */; };
+		A6D69C62178431C800DAE82B /* jsonData.json in Resources */ = {isa = PBXBuildFile; fileRef = A6D69C61178431C800DAE82B /* jsonData.json */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A6D69C59178427A700DAE82B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 800F14F816DB0EA100AB4D47 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 800F14FF16DB0EA100AB4D47;
+			remoteInfo = RestConnector;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		800F150016DB0EA100AB4D47 /* RestConnector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestConnector.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,31 +63,38 @@
 		800F150D16DB0EA100AB4D47 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		800F150F16DB0EA100AB4D47 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		800F151116DB0EA100AB4D47 /* RestConnector-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RestConnector-Prefix.pch"; sourceTree = "<group>"; };
-		800F151216DB0EA100AB4D47 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		800F151316DB0EA100AB4D47 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		800F151516DB0EA100AB4D47 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		800F151716DB0EA100AB4D47 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		800F151916DB0EA100AB4D47 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		800F152016DB0EC600AB4D47 /* RCActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCActivityIndicator.h; sourceTree = "<group>"; };
-		800F152116DB0EC600AB4D47 /* RCActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCActivityIndicator.m; sourceTree = "<group>"; };
-		800F152216DB0EC600AB4D47 /* RCRestConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCRestConnector.h; sourceTree = "<group>"; };
-		800F152316DB0EC600AB4D47 /* RCRestConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCRestConnector.m; sourceTree = "<group>"; };
-		800F152416DB0EC600AB4D47 /* RCURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCURLConnection.h; sourceTree = "<group>"; };
-		800F152516DB0EC600AB4D47 /* RCURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCURLConnection.m; sourceTree = "<group>"; };
-		80D6AD5516DC1DFB00ACBBB9 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
-		80D6AD5616DC1DFB00ACBBB9 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
-		80D6AD5816DC1E2700ACBBB9 /* FBPublicPostManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBPublicPostManager.h; sourceTree = "<group>"; };
-		80D6AD5916DC1E2700ACBBB9 /* FBPublicPostManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBPublicPostManager.m; sourceTree = "<group>"; };
-		80D6AD5B16DC1EEA00ACBBB9 /* FBPublicPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBPublicPost.h; sourceTree = "<group>"; };
-		80D6AD5C16DC1EEA00ACBBB9 /* FBPublicPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBPublicPost.m; sourceTree = "<group>"; };
 		A63FEFC11758BF530040818E /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		A63FEFC31758C7C80040818E /* example2.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = example2.db; sourceTree = "<group>"; };
-		A68A6CBF175F49B400DCDE5B /* RCObjectMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCObjectMapper.h; sourceTree = "<group>"; };
-		A68A6CC0175F49B400DCDE5B /* RCObjectMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCObjectMapper.m; sourceTree = "<group>"; };
-		A6ACFD50176089F700A1F1E0 /* RCObjectMappingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCObjectMappingHelper.h; sourceTree = "<group>"; };
-		A6ACFD51176089F700A1F1E0 /* RCObjectMappingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCObjectMappingHelper.m; sourceTree = "<group>"; };
-		A6ACFD5317608B4C00A1F1E0 /* RCTableObjectMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTableObjectMapper.h; sourceTree = "<group>"; };
-		A6ACFD5417608B4C00A1F1E0 /* RCTableObjectMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTableObjectMapper.m; sourceTree = "<group>"; };
+		A68BB4EE176EEB7A00392DAB /* RCObjectMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCObjectMapper.m; path = RCRestConnector/RCObjectMapper.m; sourceTree = "<group>"; };
+		A68BB4EF176EEB7A00392DAB /* RCDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCDBManager.h; path = RCRestConnector/RCDBManager.h; sourceTree = "<group>"; };
+		A68BB4F0176EEB7A00392DAB /* RCActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCActivityIndicator.m; path = RCRestConnector/RCActivityIndicator.m; sourceTree = "<group>"; };
+		A68BB4F1176EEB7A00392DAB /* RCDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCDBManager.m; path = RCRestConnector/RCDBManager.m; sourceTree = "<group>"; };
+		A68BB4F2176EEB7A00392DAB /* RCDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCDataCache.h; path = RCRestConnector/RCDataCache.h; sourceTree = "<group>"; };
+		A68BB4F3176EEB7A00392DAB /* RCDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCDataCache.m; path = RCRestConnector/RCDataCache.m; sourceTree = "<group>"; };
+		A68BB4F4176EEB7A00392DAB /* RCDataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCDataHandler.h; path = RCRestConnector/RCDataHandler.h; sourceTree = "<group>"; };
+		A68BB4F5176EEB7A00392DAB /* RCDataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCDataHandler.m; path = RCRestConnector/RCDataHandler.m; sourceTree = "<group>"; };
+		A68BB4F6176EEB7A00392DAB /* RCObjectMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCObjectMapper.h; path = RCRestConnector/RCObjectMapper.h; sourceTree = "<group>"; };
+		A68BB4F7176EEB7A00392DAB /* RCObjectMappingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCObjectMappingHelper.h; path = RCRestConnector/RCObjectMappingHelper.h; sourceTree = "<group>"; };
+		A68BB4F8176EEB7A00392DAB /* RCObjectMappingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCObjectMappingHelper.m; path = RCRestConnector/RCObjectMappingHelper.m; sourceTree = "<group>"; };
+		A68BB4F9176EEB7A00392DAB /* RCPropertyClassUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCPropertyClassUtil.h; path = RCRestConnector/RCPropertyClassUtil.h; sourceTree = "<group>"; };
+		A68BB4FA176EEB7A00392DAB /* RCPropertyClassUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCPropertyClassUtil.m; path = RCRestConnector/RCPropertyClassUtil.m; sourceTree = "<group>"; };
+		A68BB4FD176EEB7A00392DAB /* RCRestConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCRestConnector.m; path = RCRestConnector/RCRestConnector.m; sourceTree = "<group>"; };
+		A68BB4FE176EEB7A00392DAB /* RCRestConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCRestConnector.h; path = RCRestConnector/RCRestConnector.h; sourceTree = "<group>"; };
+		A68BB4FF176EEB7A00392DAB /* RCURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCURLConnection.h; path = RCRestConnector/RCURLConnection.h; sourceTree = "<group>"; };
+		A68BB500176EEB7A00392DAB /* RCActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCActivityIndicator.h; path = RCRestConnector/RCActivityIndicator.h; sourceTree = "<group>"; };
+		A68BB503176EEB7A00392DAB /* RCURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCURLConnection.m; path = RCRestConnector/RCURLConnection.m; sourceTree = "<group>"; };
+		A68BB50F176EEBA100392DAB /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableViewController.m; path = example/TableViewController.m; sourceTree = "<group>"; };
+		A68BB510176EEBA100392DAB /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = example/AppDelegate.h; sourceTree = "<group>"; };
+		A68BB511176EEBA100392DAB /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = example/AppDelegate.m; sourceTree = "<group>"; };
+		A68BB512176EEBA100392DAB /* FBGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBGroup.h; path = example/FBGroup.h; sourceTree = "<group>"; };
+		A68BB513176EEBA100392DAB /* FBGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBGroup.m; path = example/FBGroup.m; sourceTree = "<group>"; };
+		A68BB514176EEBA100392DAB /* FBPublicPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBPublicPost.h; path = example/FBPublicPost.h; sourceTree = "<group>"; };
+		A68BB515176EEBA100392DAB /* FBPublicPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBPublicPost.m; path = example/FBPublicPost.m; sourceTree = "<group>"; };
+		A68BB516176EEBA100392DAB /* FBPublicPostManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBPublicPostManager.h; path = example/FBPublicPostManager.h; sourceTree = "<group>"; };
+		A68BB517176EEBA100392DAB /* FBPublicPostManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBPublicPostManager.m; path = example/FBPublicPostManager.m; sourceTree = "<group>"; };
+		A68BB518176EEBA100392DAB /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableViewController.h; path = example/TableViewController.h; sourceTree = "<group>"; };
 		A6C089E017575FB20069F7AC /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = vendor/fmdb/src/FMDatabase.h; sourceTree = SOURCE_ROOT; };
 		A6C089E117575FB20069F7AC /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = vendor/fmdb/src/FMDatabase.m; sourceTree = SOURCE_ROOT; };
 		A6C089E217575FB20069F7AC /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseAdditions.h; path = vendor/fmdb/src/FMDatabaseAdditions.h; sourceTree = SOURCE_ROOT; };
@@ -93,12 +112,9 @@
 		A6C08A01175760880069F7AC /* UnitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnitTests.h; sourceTree = "<group>"; };
 		A6C08A02175760880069F7AC /* UnitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnitTests.m; sourceTree = "<group>"; };
 		A6C08A04175760880069F7AC /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Prefix.pch"; sourceTree = "<group>"; };
-		A6C08A08175765890069F7AC /* RCDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDBManager.h; sourceTree = "<group>"; };
-		A6C08A09175765890069F7AC /* RCDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDBManager.m; sourceTree = "<group>"; };
-		A6EDD57A175C82AB007D899D /* RCPropertyClassUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCPropertyClassUtil.h; sourceTree = "<group>"; };
-		A6EDD57B175C82AB007D899D /* RCPropertyClassUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCPropertyClassUtil.m; sourceTree = "<group>"; };
-		A6EDD57D175DED17007D899D /* RCTableCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTableCreator.h; sourceTree = "<group>"; };
-		A6EDD57E175DED18007D899D /* RCTableCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTableCreator.m; sourceTree = "<group>"; };
+		A6D69C5E17842A7A00DAE82B /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		A6D69C5F17842A7A00DAE82B /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		A6D69C61178431C800DAE82B /* jsonData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = jsonData.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,14 +178,16 @@
 			children = (
 				A63FEFBC1758BA2F0040818E /* Resources */,
 				80D6AD5416DC1D4E00ACBBB9 /* connector */,
-				80D6AD5516DC1DFB00ACBBB9 /* TableViewController.h */,
-				80D6AD5616DC1DFB00ACBBB9 /* TableViewController.m */,
-				800F151216DB0EA100AB4D47 /* AppDelegate.h */,
-				800F151316DB0EA100AB4D47 /* AppDelegate.m */,
-				80D6AD5816DC1E2700ACBBB9 /* FBPublicPostManager.h */,
-				80D6AD5916DC1E2700ACBBB9 /* FBPublicPostManager.m */,
-				80D6AD5B16DC1EEA00ACBBB9 /* FBPublicPost.h */,
-				80D6AD5C16DC1EEA00ACBBB9 /* FBPublicPost.m */,
+				A68BB510176EEBA100392DAB /* AppDelegate.h */,
+				A68BB511176EEBA100392DAB /* AppDelegate.m */,
+				A68BB512176EEBA100392DAB /* FBGroup.h */,
+				A68BB513176EEBA100392DAB /* FBGroup.m */,
+				A68BB514176EEBA100392DAB /* FBPublicPost.h */,
+				A68BB515176EEBA100392DAB /* FBPublicPost.m */,
+				A68BB516176EEBA100392DAB /* FBPublicPostManager.h */,
+				A68BB517176EEBA100392DAB /* FBPublicPostManager.m */,
+				A68BB518176EEBA100392DAB /* TableViewController.h */,
+				A68BB50F176EEBA100392DAB /* TableViewController.m */,
 				800F150A16DB0EA100AB4D47 /* Supporting Files */,
 			);
 			path = RestConnector;
@@ -178,7 +196,6 @@
 		800F150A16DB0EA100AB4D47 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A63FEFC31758C7C80040818E /* example2.db */,
 				800F150B16DB0EA100AB4D47 /* RestConnector-Info.plist */,
 				800F150C16DB0EA100AB4D47 /* InfoPlist.strings */,
 				800F150F16DB0EA100AB4D47 /* main.m */,
@@ -193,22 +210,22 @@
 		80D6AD5416DC1D4E00ACBBB9 /* connector */ = {
 			isa = PBXGroup;
 			children = (
-				A6EDD579175C8295007D899D /* helper */,
 				A6C089DF17575F7E0069F7AC /* FMDB */,
-				800F152016DB0EC600AB4D47 /* RCActivityIndicator.h */,
-				800F152116DB0EC600AB4D47 /* RCActivityIndicator.m */,
-				800F152416DB0EC600AB4D47 /* RCURLConnection.h */,
-				800F152516DB0EC600AB4D47 /* RCURLConnection.m */,
-				800F152216DB0EC600AB4D47 /* RCRestConnector.h */,
-				800F152316DB0EC600AB4D47 /* RCRestConnector.m */,
-				A6C08A08175765890069F7AC /* RCDBManager.h */,
-				A6C08A09175765890069F7AC /* RCDBManager.m */,
-				A6EDD57D175DED17007D899D /* RCTableCreator.h */,
-				A6EDD57E175DED18007D899D /* RCTableCreator.m */,
-				A68A6CBF175F49B400DCDE5B /* RCObjectMapper.h */,
-				A68A6CC0175F49B400DCDE5B /* RCObjectMapper.m */,
-				A6ACFD5317608B4C00A1F1E0 /* RCTableObjectMapper.h */,
-				A6ACFD5417608B4C00A1F1E0 /* RCTableObjectMapper.m */,
+				A6EDD579175C8295007D899D /* helper */,
+				A68BB500176EEB7A00392DAB /* RCActivityIndicator.h */,
+				A68BB4F0176EEB7A00392DAB /* RCActivityIndicator.m */,
+				A68BB4F2176EEB7A00392DAB /* RCDataCache.h */,
+				A68BB4F3176EEB7A00392DAB /* RCDataCache.m */,
+				A68BB4F4176EEB7A00392DAB /* RCDataHandler.h */,
+				A68BB4F5176EEB7A00392DAB /* RCDataHandler.m */,
+				A68BB4EF176EEB7A00392DAB /* RCDBManager.h */,
+				A68BB4F1176EEB7A00392DAB /* RCDBManager.m */,
+				A68BB4F6176EEB7A00392DAB /* RCObjectMapper.h */,
+				A68BB4EE176EEB7A00392DAB /* RCObjectMapper.m */,
+				A68BB4FE176EEB7A00392DAB /* RCRestConnector.h */,
+				A68BB4FD176EEB7A00392DAB /* RCRestConnector.m */,
+				A68BB4FF176EEB7A00392DAB /* RCURLConnection.h */,
+				A68BB503176EEB7A00392DAB /* RCURLConnection.m */,
 			);
 			name = connector;
 			sourceTree = "<group>";
@@ -243,6 +260,9 @@
 				A6C08A01175760880069F7AC /* UnitTests.h */,
 				A6C08A02175760880069F7AC /* UnitTests.m */,
 				A6C089FC175760880069F7AC /* Supporting Files */,
+				A6D69C5E17842A7A00DAE82B /* Location.h */,
+				A6D69C5F17842A7A00DAE82B /* Location.m */,
+				A6D69C61178431C800DAE82B /* jsonData.json */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -260,10 +280,10 @@
 		A6EDD579175C8295007D899D /* helper */ = {
 			isa = PBXGroup;
 			children = (
-				A6ACFD50176089F700A1F1E0 /* RCObjectMappingHelper.h */,
-				A6ACFD51176089F700A1F1E0 /* RCObjectMappingHelper.m */,
-				A6EDD57A175C82AB007D899D /* RCPropertyClassUtil.h */,
-				A6EDD57B175C82AB007D899D /* RCPropertyClassUtil.m */,
+				A68BB4F9176EEB7A00392DAB /* RCPropertyClassUtil.h */,
+				A68BB4FA176EEB7A00392DAB /* RCPropertyClassUtil.m */,
+				A68BB4F7176EEB7A00392DAB /* RCObjectMappingHelper.h */,
+				A68BB4F8176EEB7A00392DAB /* RCObjectMappingHelper.m */,
 			);
 			name = helper;
 			sourceTree = "<group>";
@@ -278,6 +298,7 @@
 				800F14FC16DB0EA100AB4D47 /* Sources */,
 				800F14FD16DB0EA100AB4D47 /* Frameworks */,
 				800F14FE16DB0EA100AB4D47 /* Resources */,
+				A6D69C551784213C00DAE82B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -300,6 +321,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				A6D69C5A178427A700DAE82B /* PBXTargetDependency */,
 			);
 			name = UnitTests;
 			productName = UnitTests;
@@ -343,7 +365,6 @@
 				800F151616DB0EA100AB4D47 /* Default.png in Resources */,
 				800F151816DB0EA100AB4D47 /* Default@2x.png in Resources */,
 				800F151A16DB0EA100AB4D47 /* Default-568h@2x.png in Resources */,
-				A63FEFC41758C7C80040818E /* example2.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6C08A00175760880069F7AC /* InfoPlist.strings in Resources */,
+				A6D69C62178431C800DAE82B /* jsonData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +393,19 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
+		A6D69C551784213C00DAE82B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "KEYWORDS=\"TODO:|FIXME:|\\?\\?\\?:|\\!\\!\\!:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -379,24 +414,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				800F151016DB0EA100AB4D47 /* main.m in Sources */,
-				800F151416DB0EA100AB4D47 /* AppDelegate.m in Sources */,
-				800F152616DB0EC600AB4D47 /* RCActivityIndicator.m in Sources */,
-				800F152716DB0EC600AB4D47 /* RCRestConnector.m in Sources */,
-				800F152816DB0EC600AB4D47 /* RCURLConnection.m in Sources */,
-				80D6AD5716DC1DFB00ACBBB9 /* TableViewController.m in Sources */,
-				80D6AD5A16DC1E2700ACBBB9 /* FBPublicPostManager.m in Sources */,
-				80D6AD5D16DC1EEA00ACBBB9 /* FBPublicPost.m in Sources */,
 				A6C089EB17575FB20069F7AC /* FMDatabase.m in Sources */,
 				A6C089EC17575FB20069F7AC /* FMDatabaseAdditions.m in Sources */,
 				A6C089ED17575FB20069F7AC /* FMDatabasePool.m in Sources */,
 				A6C089EE17575FB20069F7AC /* FMDatabaseQueue.m in Sources */,
 				A6C089F017575FB20069F7AC /* FMResultSet.m in Sources */,
-				A6C08A0A1757658A0069F7AC /* RCDBManager.m in Sources */,
-				A6EDD57C175C82AB007D899D /* RCPropertyClassUtil.m in Sources */,
-				A6EDD57F175DED18007D899D /* RCTableCreator.m in Sources */,
-				A68A6CC1175F49B400DCDE5B /* RCObjectMapper.m in Sources */,
-				A6ACFD52176089F700A1F1E0 /* RCObjectMappingHelper.m in Sources */,
-				A6ACFD5517608B4C00A1F1E0 /* RCTableObjectMapper.m in Sources */,
+				A68BB504176EEB7A00392DAB /* RCObjectMapper.m in Sources */,
+				A68BB505176EEB7A00392DAB /* RCActivityIndicator.m in Sources */,
+				A68BB506176EEB7A00392DAB /* RCDBManager.m in Sources */,
+				A68BB507176EEB7A00392DAB /* RCDataCache.m in Sources */,
+				A68BB508176EEB7A00392DAB /* RCDataHandler.m in Sources */,
+				A68BB509176EEB7A00392DAB /* RCObjectMappingHelper.m in Sources */,
+				A68BB50A176EEB7A00392DAB /* RCPropertyClassUtil.m in Sources */,
+				A68BB50C176EEB7A00392DAB /* RCRestConnector.m in Sources */,
+				A68BB50E176EEB7A00392DAB /* RCURLConnection.m in Sources */,
+				A68BB519176EEBA100392DAB /* TableViewController.m in Sources */,
+				A68BB51A176EEBA100392DAB /* AppDelegate.m in Sources */,
+				A68BB51B176EEBA100392DAB /* FBGroup.m in Sources */,
+				A68BB51C176EEBA100392DAB /* FBPublicPost.m in Sources */,
+				A68BB51D176EEBA100392DAB /* FBPublicPostManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,10 +441,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6C08A03175760880069F7AC /* UnitTests.m in Sources */,
+				A6D69C6017842A7A00DAE82B /* Location.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A6D69C5A178427A700DAE82B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 800F14FF16DB0EA100AB4D47 /* RestConnector */;
+			targetProxy = A6D69C59178427A700DAE82B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		800F150C16DB0EA100AB4D47 /* InfoPlist.strings */ = {
@@ -513,6 +558,7 @@
 		A6C08A06175760880069F7AC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RestConnector.app/RestConnector";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
@@ -521,6 +567,7 @@
 				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
 				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -528,6 +575,7 @@
 		A6C08A07175760880069F7AC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RestConnector.app/RestConnector";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
@@ -536,6 +584,7 @@
 				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
 				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
